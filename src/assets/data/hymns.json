@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "number": 1,
+    "title": "A Nom Lon Peiasan",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A nom lon peiasan, Jesus ach Samol,",
+          "Iwe, a ranilo lon lesosor."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Iwe, a kul ewe fau,",
+          "Jesus Kraist A manau seni ma",
+          "Jesus Kraist A tou seni peiasan,",
+          "Ach chon amanau pworaiti malo;",
+          "A manau, Amanau, Haleluia A manau."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Sounfiu ra mamasa peiasen Jesus,",
+          "Nge ra chok niueiti saramen lang.",
+          "Jesus ach souakom A manausefal,",
+          "Oukich chon kukumwir, sa manau ren."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "number": 2,
+    "title": "A Tori ewe Fansoun mi Fokkun Auchea",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A tori ewe fansoun mi fokkun auchea",
+          "Ngeni Kich meinisin, chon fonufan meinisin",
+          "Pwe sipwe kan fori ach sipwe amolata",
+          "Sap ren pisek o moni pwe letipach."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Sa ki (kilisou) lone ei (fansoun)",
+          "Kloria (mwaret) mwaret (eti Kot)",
+          "Ren An (liffang) a ti (tinato) ewe Messiah (Messiah)",
+          "Epwe angasalo kich seni ach fotekin tipisin",
+          "Ach u ngeni Kot won fonufan (fonufan)."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "O ekkewe al mi por, repwe awenewen",
+          "Pwal ekewe mi mot, repwe pwal amasou",
+          "Pwal ekewe mi chukuta repwe sonoch",
+          "Me mwan ware ton ewe King lap Noun Kot."
+        ]
+      }
+    ]
+  }
+]
+  

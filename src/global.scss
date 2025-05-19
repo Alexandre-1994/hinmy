@@ -35,3 +35,255 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Estilos Globais */
+:root {
+  --ion-color-primary: #2c3e50;
+  --ion-color-secondary: #34495e;
+  --ion-color-tertiary: #3498db;
+  --ion-color-success: #27ae60;
+  --ion-color-warning: #f39c12;
+  --ion-color-danger: #e74c3c;
+  --ion-color-light: #ecf0f1;
+  --ion-color-medium: #95a5a6;
+  --ion-color-dark: #2c3e50;
+}
+
+/* Estilos Gerais */
+ion-content {
+  --background: #f5f6fa;
+}
+
+ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: white;
+}
+
+ion-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Estilos da Lista de Hinos */
+.hymn-list-container {
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+ion-list {
+  background: transparent;
+  padding: 0;
+}
+
+ion-item {
+  --background: white;
+  --border-radius: 12px;
+  margin-bottom: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+    --background: var(--ion-color-light);
+  }
+
+  ion-label {
+    h2 {
+      font-weight: 600;
+      color: var(--ion-color-primary);
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+
+    .hymn-subtitle {
+      color: var(--ion-color-medium);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+
+  ion-icon[slot="end"] {
+    font-size: 20px;
+    opacity: 0.5;
+  }
+}
+
+.custom-searchbar {
+  --background: white;
+  --border-radius: 12px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  --placeholder-color: var(--ion-color-medium);
+  --color: var(--ion-color-primary);
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+/* Estilos da Barra de Pesquisa */
+ion-searchbar {
+  --background: white;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  --placeholder-color: var(--ion-color-medium);
+  --color: var(--ion-color-primary);
+  padding: 8px;
+}
+
+/* Estilos da Página de Detalhes do Hino */
+.hymn-detail {
+  padding: 16px;
+
+  h1 {
+    color: var(--ion-color-primary);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .content {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    .verse, .chorus {
+      margin-bottom: 24px;
+
+      h3 {
+        color: var(--ion-color-secondary);
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      p {
+        color: var(--ion-color-dark);
+        line-height: 1.6;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+    }
+
+    .chorus {
+      background: var(--ion-color-light);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+  }
+}
+
+/* Estilos da Página About */
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  h1 {
+    color: var(--ion-color-primary);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  h2 {
+    color: var(--ion-color-secondary);
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: var(--ion-color-dark);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  ul {
+    padding-left: 24px;
+    
+    li {
+      color: var(--ion-color-dark);
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+  }
+}
+
+/* Estilos dos Botões */
+ion-button {
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.3px;
+
+  &[color="primary"] {
+    --background: var(--ion-color-primary);
+  }
+}
+
+/* Estilos do Botão Voltar */
+ion-back-button {
+  --color: white;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ion-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .about-container {
+    padding: 16px;
+  }
+
+  .hymn-detail {
+    padding: 12px;
+  }
+}
