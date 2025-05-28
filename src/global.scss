@@ -38,16 +38,146 @@
 
 /* Estilos Globais */
 :root {
-  --ion-color-primary: #2c3e50;
-  --ion-color-secondary: #34495e;
-  --ion-color-tertiary: #3498db;
-  --ion-color-success: #27ae60;
-  --ion-color-warning: #f39c12;
-  --ion-color-danger: #e74c3c;
-  --ion-color-light: #ecf0f1;
-  --ion-color-medium: #95a5a6;
+  /* === CORES PRIMÁRIAS === */
+  --ion-color-primary: #092e87;
+  --ion-color-primary-rgb: 9, 46, 135;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #082877;
+  --ion-color-primary-tint: #234393;
+
+  /* === CORES SECUNDÁRIAS (Saffron Dourado) === */
+  --ion-color-secondary: #f4c430;
+  --ion-color-secondary-rgb: 244, 196, 48;
+  --ion-color-secondary-contrast: #092e87;
+  --ion-color-secondary-contrast-rgb: 9, 46, 135;
+  --ion-color-secondary-shade: #d7ac2a;
+  --ion-color-secondary-tint: #f5ca45;
+
+  /* === CORES TERCIÁRIAS (Azul Celeste) === */
+  --ion-color-tertiary: #1a4db5;
+  --ion-color-tertiary-rgb: 26, 77, 181;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #17449f;
+  --ion-color-tertiary-tint: #3160bc;
+
+  /* === CORES DE SUCESSO (Verde Sagrado) === */
+  --ion-color-success: #28a745;
+  --ion-color-success-rgb: 40, 167, 69;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #24923d;
+  --ion-color-success-tint: #3eb158;
+
+  /* === CORES DE AVISO (Laranja Suave) === */
+  --ion-color-warning: #ffc107;
+  --ion-color-warning-rgb: 255, 193, 7;
+  --ion-color-warning-contrast: #092e87;
+  --ion-color-warning-contrast-rgb: 9, 46, 135;
+  --ion-color-warning-shade: #e0aa06;
+  --ion-color-warning-tint: #ffc720;
+
+  /* === CORES DE PERIGO (Vermelho Elegante) === */
+  --ion-color-danger: #dc3545;
+  --ion-color-danger-rgb: 220, 53, 69;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c22e3c;
+  --ion-color-danger-tint: #df4958;
+
+  /* === CORES ESCURAS (Azul Profundo) === */
   --ion-color-dark: #2c3e50;
+  --ion-color-dark-rgb: 44, 62, 80;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #273846;
+  --ion-color-dark-tint: #415162;
+
+  /* === CORES MÉDIAS (Cinza Equilibrado) === */
+  --ion-color-medium: #7f8c8d;
+  --ion-color-medium-rgb: 127, 140, 141;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #707b7c;
+  --ion-color-medium-tint: #8c9899;
+
+  /* === CORES CLARAS (Cinza Muito Suave) === */
+  --ion-color-light: #f8f9fa;
+  --ion-color-light-rgb: 248, 249, 250;
+  --ion-color-light-contrast: #092e87;
+  --ion-color-light-contrast-rgb: 9, 46, 135;
+  --ion-color-light-shade: #dadcdd;
+  --ion-color-light-tint: #f9fafb;
+
+  /* === BACKGROUNDS === */
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+
+  /* Background secundário para cards e seções */
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+
+  /* === CORES DE TEXTO === */
+  --ion-text-color: #2c3e50;
+  --ion-text-color-rgb: 44, 62, 80;
+
+  /* Texto secundário */
+  --ion-color-step-600: #7f8c8d;
+  --ion-color-step-400: #95a5a6;
+
+  /* === CORES PERSONALIZADAS ADICIONAIS === */
+  
+  /* Dourado Suave para fundos de destaque */
+  --ion-color-gold-light: #fef9e7;
+  --ion-color-gold-light-rgb: 254, 249, 231;
+  --ion-color-gold-light-contrast: #092e87;
+  --ion-color-gold-light-contrast-rgb: 9, 46, 135;
+  --ion-color-gold-light-shade: #e0dcc7;
+  --ion-color-gold-light-tint: #fefae9;
+
+  /* Azul Muito Suave para fundos alternativos */
+  --ion-color-blue-light: #f0f4ff;
+  --ion-color-blue-light-rgb: 240, 244, 255;
+  --ion-color-blue-light-contrast: #092e87;
+  --ion-color-blue-light-contrast-rgb: 9, 46, 135;
+  --ion-color-blue-light-shade: #d3d7e0;
+  --ion-color-blue-light-tint: #f2f5ff;
+
+  /* === GRADIENTES === */
+  --ion-gradient-primary: linear-gradient(135deg, #092e87 0%, #1a4db5 100%);
+  --ion-gradient-secondary: linear-gradient(135deg, #f4c430 0%, #ffc720 100%);
+  --ion-gradient-background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+
+  /* === SHADOWS E BORDAS === */
+  --ion-shadow-primary: 0 4px 16px rgba(9, 46, 135, 0.15);
+  --ion-shadow-secondary: 0 4px 16px rgba(244, 196, 48, 0.15);
+  --ion-shadow-soft: 0 2px 8px rgba(44, 62, 80, 0.08);
+
+  /* Bordas suaves */
+  --ion-border-color: #e9ecef;
+  --ion-border-radius: 12px;
+  --ion-border-radius-small: 8px;
+  --ion-border-radius-large: 16px;
+
+  /* === TOOLBAR E HEADER === */
+  --ion-toolbar-background: var(--ion-color-primary);
+  --ion-toolbar-color: #ffffff;
+  --ion-toolbar-border-color: transparent;
+
+  /* === TAB BAR === */
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-color: var(--ion-color-medium);
+  --ion-tab-bar-color-selected: var(--ion-color-primary);
+  --ion-tab-bar-border-color: var(--ion-border-color);
+
+  /* === SEGMENTED BUTTON === */
+  --ion-segment-background: var(--ion-color-light);
+  --ion-segment-color: var(--ion-color-medium);
+  --ion-segment-color-checked: var(--ion-color-primary);
+  --ion-segment-indicator-color: var(--ion-color-secondary);
 }
+ 
 
 /* Estilos Gerais */
 ion-content {

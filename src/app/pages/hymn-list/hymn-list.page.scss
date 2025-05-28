@@ -1,0 +1,367 @@
+/* ===== ESTILOS DA PÁGINA DE HINOS ===== */
+
+ion-header {
+    /* Gradiente elegante no header */
+    ion-toolbar {
+      --background: var(--ion-gradient-primary);
+      --color: white;
+      --border-color: transparent;
+      
+      ion-title {
+        font-weight: 600;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+  
+      ion-button {
+        --border-radius: 50%;
+        --box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+        
+        ion-icon {
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+      }
+    }
+  
+    /* Toolbar da searchbar com fundo suave */
+    ion-toolbar:nth-child(2) {
+      --background: linear-gradient(180deg, var(--ion-color-primary) 0%, rgba(9, 46, 135, 0.95) 100%);
+      --color: white;
+      padding: 8px 16px 16px 16px;
+    }
+  }
+  
+  /* ===== SEARCHBAR PERSONALIZADA ===== */
+  .custom-searchbar {
+    --background: rgba(255, 255, 255, 0.95);
+    --color: var(--ion-color-dark);
+    --placeholder-color: var(--ion-color-medium);
+    --icon-color: var(--ion-color-primary);
+    --clear-button-color: var(--ion-color-medium);
+    --border-radius: 25px;
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --backdrop-filter: blur(10px);
+    
+    margin: 0;
+    padding: 0;
+  
+    .searchbar-input-container {
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        border-color: var(--ion-color-secondary);
+        transform: translateY(-1px);
+      }
+    }
+  
+    &.searchbar-has-focus {
+      .searchbar-input-container {
+        border-color: var(--ion-color-secondary);
+        box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
+      }
+    }
+  }
+  
+  /* ===== CONTAINER PRINCIPAL ===== */
+  ion-content {
+    --background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%);
+    
+    .hymn-list-container {
+      padding: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+  
+  /* ===== LISTA DE HINOS ===== */
+  ion-list {
+    background: transparent;
+    padding: 0;
+    margin-top: 8px;
+  }
+  
+  ion-item {
+    --background: white;
+    --border-color: transparent;
+    --inner-border-width: 0;
+    --padding-start: 20px;
+    --padding-end: 16px;
+    --min-height: 75px;
+    
+    margin-bottom: 12px;
+    border-radius: var(--ion-border-radius);
+    box-shadow: var(--ion-shadow-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    /* Efeito de destaque sutil */
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--ion-color-secondary);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+  
+    &:hover, &:active {
+      transform: translateY(-2px);
+      box-shadow: var(--ion-shadow-primary);
+      
+      &::before {
+        transform: scaleY(1);
+      }
+      
+      ion-icon {
+        color: var(--ion-color-secondary) !important;
+        transform: translateX(4px);
+      }
+    }
+  
+    /* Efeito ripple personalizado */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(244, 196, 48, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+  
+    &:active::after {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  
+  /* ===== LABELS DOS HINOS ===== */
+  ion-label {
+    margin: 8px 0;
+    
+    h2 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--ion-color-dark);
+      line-height: 1.4;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      
+      /* Número do hino com destaque dourado */
+      &::first-letter {
+        color: var(--ion-color-secondary);
+        font-weight: 700;
+      }
+    }
+    
+    .hymn-subtitle {
+      color: var(--ion-color-medium);
+      font-size: 0.9rem;
+      font-style: italic;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      
+      &::before {
+        // content: '🌍';
+        margin-right: 6px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  /* ===== ÍCONE DE NAVEGAÇÃO ===== */
+  ion-item ion-icon[slot="end"] {
+    color: var(--ion-color-medium);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    margin-left: 12px;
+  }
+  
+  /* ===== ESTADO VAZIO ===== */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    
+    ion-icon {
+      font-size: 4rem;
+      color: var(--ion-color-medium);
+      margin-bottom: 16px;
+      opacity: 0.6;
+    }
+    
+    p {
+      color: var(--ion-color-medium);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+  
+  /* ===== ANIMAÇÕES ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  ion-item {
+    animation: fadeInUp 0.5s ease forwards;
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+        opacity: 0;
+      }
+    }
+  }
+  
+  /* ===== RESPONSIVIDADE ===== */
+  @media (min-width: 768px) {
+    .hymn-list-container {
+      padding: 24px;
+    }
+    
+    ion-item {
+      --min-height: 85px;
+      --padding-start: 24px;
+      --padding-end: 20px;
+      
+      ion-label h2 {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .hymn-list-container {
+      max-width: 800px;
+      padding: 32px;
+    }
+    
+    ion-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 16px;
+    }
+    
+    ion-item {
+      margin-bottom: 0;
+    }
+  }
+  
+  /* ===== TEMA ESCURO ===== */
+  @media (prefers-color-scheme: dark) {
+    ion-content {
+      --background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%);
+    }
+    
+    ion-item {
+      --background: #2d2d2d;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .custom-searchbar {
+      --background: rgba(45, 45, 45, 0.95);
+      --color: white;
+    }
+  }
+  
+  /* ===== CLASSES UTILITÁRIAS ADICIONAIS ===== */
+  .hymn-number-highlight {
+    color: var(--ion-color-secondary);
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  
+  .featured-hymn {
+    &::before {
+      background: linear-gradient(45deg, var(--ion-color-secondary), var(--ion-color-warning));
+      width: 6px;
+    }
+    
+    ion-label h2 {
+      color: var(--ion-color-primary);
+    }
+  }
+  
+  .loading-skeleton {
+    ion-item {
+      ion-label {
+        h2, p {
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          animation: loading 1.5s infinite;
+          border-radius: 4px;
+          height: 16px;
+          margin-bottom: 8px;
+        }
+        
+        p {
+          height: 12px;
+          width: 60%;
+        }
+      }
+    }
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    --border-width: 0;
+    --min-height: 60px;
+
+    .title-text {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0;
+      color: var(--ion-color-primary-contrast);
+    }
+  }
+
+  .search-toolbar {
+    --background: var(--ion-color-primary-shade);
+    padding-bottom: 8px;
+  }
+
+  .custom-searchbar {
+    --background: var(--ion-color-primary-contrast);
+    --border-radius: 10px;
+    --box-shadow: none;
+    --placeholder-color: var(--ion-color-medium);
+    --icon-color: var(--ion-color-primary);
+    --cancel-button-color: var(--ion-color-primary-contrast);
+    margin: 0;
+
+    &::part(search-icon) {
+      color: var(--ion-color-primary);
+    }
+  }
+}

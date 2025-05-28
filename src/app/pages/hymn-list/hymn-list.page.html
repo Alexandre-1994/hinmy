@@ -1,22 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Hinário Digital</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center ion-padding-top">
+      <h1 class="title-text">Aninnisn Ngunuk</h1>
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['/about']" color="light">
-        <ion-icon name="information-circle" slot="icon-only" size="large"></ion-icon>
+      <ion-button [routerLink]="['/about']" fill="clear">
+        <ion-icon name="information-circle-outline" slot="icon-only" size="large"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar 
-      [(ngModel)]="searchTerm" 
-      (ionChange)="search()" 
+  
+  <ion-toolbar color="primary" class="search-toolbar">
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionChange)="search()"
       placeholder="Buscar por título ou número"
       animated="true"
-      class="custom-searchbar">
+      color="light"
+      class="custom-searchbar ion-padding-horizontal"
+      inputmode="text"
+      debounce="300"
+      show-clear-button="always"
+      clear-icon="close-circle">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content [fullscreen]="true">
   <div class="hymn-list-container">
@@ -24,7 +33,7 @@
       <ion-item *ngFor="let hymn of hymns" [routerLink]="['/hymn-detail', hymn.id]" detail="false">
         <ion-label>
           <h2>{{hymn.number}}. {{hymn.title}}</h2>
-          <p class="hymn-subtitle">{{hymn.language || 'Idioma não especificado'}}</p>
+          <!-- <p class="hymn-subtitle">{{hymn.language || 'Idioma não especificado'}}</p> -->
         </ion-label>
         <ion-icon name="chevron-forward" slot="end" color="medium"></ion-icon>
       </ion-item>
