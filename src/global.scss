@@ -37,6 +37,8 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* Estilos Globais */
+/* ===== PALETA DE CORES IONIC - APLICATIVO DE HINOS ===== */
+
 :root {
   /* === CORES PRIMÁRIAS === */
   --ion-color-primary: #092e87;
@@ -62,7 +64,7 @@
   --ion-color-tertiary-shade: #17449f;
   --ion-color-tertiary-tint: #3160bc;
 
-  /* === CORES DE SUCESSO (Verde Sagrado) === */
+  /* === CORES DE SUCESSO === */
   --ion-color-success: #28a745;
   --ion-color-success-rgb: 40, 167, 69;
   --ion-color-success-contrast: #ffffff;
@@ -70,7 +72,7 @@
   --ion-color-success-shade: #24923d;
   --ion-color-success-tint: #3eb158;
 
-  /* === CORES DE AVISO (Laranja Suave) === */
+  /* === CORES DE AVISO === */
   --ion-color-warning: #ffc107;
   --ion-color-warning-rgb: 255, 193, 7;
   --ion-color-warning-contrast: #092e87;
@@ -78,7 +80,7 @@
   --ion-color-warning-shade: #e0aa06;
   --ion-color-warning-tint: #ffc720;
 
-  /* === CORES DE PERIGO (Vermelho Elegante) === */
+  /* === CORES DE PERIGO === */
   --ion-color-danger: #dc3545;
   --ion-color-danger-rgb: 220, 53, 69;
   --ion-color-danger-contrast: #ffffff;
@@ -86,7 +88,7 @@
   --ion-color-danger-shade: #c22e3c;
   --ion-color-danger-tint: #df4958;
 
-  /* === CORES ESCURAS (Azul Profundo) === */
+  /* === CORES ESCURAS === */
   --ion-color-dark: #2c3e50;
   --ion-color-dark-rgb: 44, 62, 80;
   --ion-color-dark-contrast: #ffffff;
@@ -94,7 +96,7 @@
   --ion-color-dark-shade: #273846;
   --ion-color-dark-tint: #415162;
 
-  /* === CORES MÉDIAS (Cinza Equilibrado) === */
+  /* === CORES MÉDIAS === */
   --ion-color-medium: #7f8c8d;
   --ion-color-medium-rgb: 127, 140, 141;
   --ion-color-medium-contrast: #ffffff;
@@ -102,7 +104,7 @@
   --ion-color-medium-shade: #707b7c;
   --ion-color-medium-tint: #8c9899;
 
-  /* === CORES CLARAS (Cinza Muito Suave) === */
+  /* === CORES CLARAS === */
   --ion-color-light: #f8f9fa;
   --ion-color-light-rgb: 248, 249, 250;
   --ion-color-light-contrast: #092e87;
@@ -113,22 +115,16 @@
   /* === BACKGROUNDS === */
   --ion-background-color: #ffffff;
   --ion-background-color-rgb: 255, 255, 255;
-
-  /* Background secundário para cards e seções */
   --ion-item-background: #ffffff;
   --ion-card-background: #ffffff;
 
   /* === CORES DE TEXTO === */
   --ion-text-color: #2c3e50;
   --ion-text-color-rgb: 44, 62, 80;
-
-  /* Texto secundário */
   --ion-color-step-600: #7f8c8d;
   --ion-color-step-400: #95a5a6;
 
-  /* === CORES PERSONALIZADAS ADICIONAIS === */
-  
-  /* Dourado Suave para fundos de destaque */
+  /* === CORES PERSONALIZADAS === */
   --ion-color-gold-light: #fef9e7;
   --ion-color-gold-light-rgb: 254, 249, 231;
   --ion-color-gold-light-contrast: #092e87;
@@ -136,7 +132,6 @@
   --ion-color-gold-light-shade: #e0dcc7;
   --ion-color-gold-light-tint: #fefae9;
 
-  /* Azul Muito Suave para fundos alternativos */
   --ion-color-blue-light: #f0f4ff;
   --ion-color-blue-light-rgb: 240, 244, 255;
   --ion-color-blue-light-contrast: #092e87;
@@ -154,39 +149,32 @@
   --ion-shadow-secondary: 0 4px 16px rgba(244, 196, 48, 0.15);
   --ion-shadow-soft: 0 2px 8px rgba(44, 62, 80, 0.08);
 
-  /* Bordas suaves */
   --ion-border-color: #e9ecef;
   --ion-border-radius: 12px;
   --ion-border-radius-small: 8px;
   --ion-border-radius-large: 16px;
 
-  /* === TOOLBAR E HEADER === */
+  /* === CONFIGURAÇÕES DE COMPONENTES === */
   --ion-toolbar-background: var(--ion-color-primary);
   --ion-toolbar-color: #ffffff;
   --ion-toolbar-border-color: transparent;
 
-  /* === TAB BAR === */
   --ion-tab-bar-background: #ffffff;
   --ion-tab-bar-color: var(--ion-color-medium);
   --ion-tab-bar-color-selected: var(--ion-color-primary);
   --ion-tab-bar-border-color: var(--ion-border-color);
 
-  /* === SEGMENTED BUTTON === */
   --ion-segment-background: var(--ion-color-light);
   --ion-segment-color: var(--ion-color-medium);
   --ion-segment-color-checked: var(--ion-color-primary);
   --ion-segment-indicator-color: var(--ion-color-secondary);
 }
- 
 
-/* Estilos Gerais */
+/* ===== ESTILOS GLOBAIS ===== */
+
 ion-content {
-  --background: #f5f6fa;
-}
-
-ion-toolbar {
-  --background: var(--ion-color-primary);
-  --color: white;
+  --background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%);
+  animation: fadeIn 0.3s ease-out;
 }
 
 ion-title {
@@ -194,142 +182,298 @@ ion-title {
   letter-spacing: 0.5px;
 }
 
-/* Estilos da Lista de Hinos */
+ion-button {
+  --border-radius: 8px;
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.3px;
+}
+
+ion-back-button {
+  --color: white;
+  
+  &:hover {
+    --color: var(--ion-color-secondary);
+  }
+}
+
+/* ===== HEADER E TOOLBAR ===== */
+
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-gradient-primary);
+    --color: white;
+    --border-color: transparent;
+    --border-width: 0;
+    --min-height: 60px;
+    
+    ion-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    ion-button {
+      --border-radius: 50%;
+      --box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+      
+      ion-icon {
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+      }
+    }
+  }
+
+  /* Toolbar da searchbar */
+  .search-toolbar {
+    --background: linear-gradient(180deg, var(--ion-color-primary) 0%, rgba(9, 46, 135, 0.95) 100%);
+    --color: white;
+    padding: 8px 16px 16px 16px;
+  }
+}
+
+/* ===== SEARCHBAR ===== */
+
+.custom-searchbar {
+  --background: rgba(255, 255, 255, 0.95);
+  --color: var(--ion-color-dark);
+  --placeholder-color: var(--ion-color-medium);
+  --icon-color: var(--ion-color-primary);
+  --clear-button-color: var(--ion-color-medium);
+  --border-radius: 25px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --backdrop-filter: blur(10px);
+  
+  margin: 0;
+  padding: 0;
+
+  .searchbar-input-container {
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-color: var(--ion-color-secondary);
+      transform: translateY(-1px);
+    }
+  }
+
+  &.searchbar-has-focus {
+    .searchbar-input-container {
+      border-color: var(--ion-color-secondary);
+      box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
+    }
+  }
+}
+
+/* ===== LISTA DE HINOS ===== */
+
 .hymn-list-container {
   padding: 16px;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 ion-list {
   background: transparent;
   padding: 0;
+  margin-top: 8px;
 }
 
 ion-item {
   --background: white;
-  --border-radius: 12px;
-  margin-bottom: 12px;
-  --padding-start: 16px;
+  --border-color: transparent;
+  --inner-border-width: 0;
+  --padding-start: 20px;
   --padding-end: 16px;
-  --padding-top: 12px;
-  --padding-bottom: 12px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: all 0.2s ease;
-
-  &:active {
-    transform: scale(0.98);
-    --background: var(--ion-color-light);
+  --min-height: 75px;
+  
+  margin-bottom: 12px;
+  border-radius: var(--ion-border-radius);
+  box-shadow: var(--ion-shadow-soft);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  /* Efeito de destaque sutil */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--ion-color-secondary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
   }
 
-  ion-label {
-    h2 {
-      font-weight: 600;
-      color: var(--ion-color-primary);
-      margin-bottom: 4px;
-      font-size: 16px;
+  &:hover, &:active {
+    transform: translateY(-2px);
+    box-shadow: var(--ion-shadow-primary);
+    
+    &::before {
+      transform: scaleY(1);
     }
-
-    .hymn-subtitle {
-      color: var(--ion-color-medium);
-      font-size: 14px;
-      margin-top: 4px;
+    
+    ion-icon {
+      color: var(--ion-color-secondary) !important;
+      transform: translateX(4px);
     }
   }
 
-  ion-icon[slot="end"] {
-    font-size: 20px;
-    opacity: 0.5;
+  /* Efeito ripple personalizado */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(244, 196, 48, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+
+  &:active::after {
+    width: 300px;
+    height: 300px;
   }
 }
 
-.custom-searchbar {
-  --background: white;
-  --border-radius: 12px;
-  --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  --placeholder-color: var(--ion-color-medium);
-  --color: var(--ion-color-primary);
-  padding: 8px;
+/* ===== LABELS DOS HINOS ===== */
+
+ion-label {
   margin: 8px 0;
+  
+  h2 {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--ion-color-dark);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    
+    /* Número do hino com destaque dourado */
+    &::first-letter {
+      color: var(--ion-color-secondary);
+      font-weight: 700;
+    }
+  }
+  
+  .hymn-subtitle {
+    color: var(--ion-color-medium);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
 }
+
+/* ===== ÍCONE DE NAVEGAÇÃO ===== */
+
+ion-item ion-icon[slot="end"] {
+  color: var(--ion-color-medium);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  margin-left: 12px;
+}
+
+/* ===== ESTADO VAZIO ===== */
 
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 60px 20px;
   text-align: center;
-  color: var(--ion-color-medium);
-
+  
   ion-icon {
-    font-size: 48px;
+    font-size: 4rem;
+    color: var(--ion-color-medium);
     margin-bottom: 16px;
-    opacity: 0.5;
+    opacity: 0.6;
   }
-
+  
   p {
-    font-size: 16px;
+    color: var(--ion-color-medium);
+    font-size: 1.1rem;
+    font-weight: 500;
     margin: 0;
   }
 }
 
-/* Estilos da Barra de Pesquisa */
-ion-searchbar {
-  --background: white;
-  --border-radius: 8px;
-  --box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  --placeholder-color: var(--ion-color-medium);
-  --color: var(--ion-color-primary);
-  padding: 8px;
-}
+/* ===== PÁGINA DE DETALHES DO HINO ===== */
 
-/* Estilos da Página de Detalhes do Hino */
 .hymn-detail {
   padding: 16px;
+  max-width: 700px;
+  margin: 0 auto;
 
   h1 {
     color: var(--ion-color-primary);
-    font-size: 24px;
+    font-size: 1.8rem;
     font-weight: 700;
-    margin-bottom: 24px;
     text-align: center;
+    margin-bottom: 24px;
   }
 
   .content {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
     .verse, .chorus {
-      margin-bottom: 24px;
-
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      
       h3 {
-        color: var(--ion-color-secondary);
-        font-size: 18px;
+        font-size: 1rem;
         font-weight: 600;
-        margin-bottom: 12px;
+        margin: 0 0 12px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
-
+      
       p {
-        color: var(--ion-color-dark);
+        font-size: 1rem;
         line-height: 1.6;
-        margin-bottom: 8px;
-        font-size: 16px;
+        color: var(--ion-color-dark);
+        margin: 0 0 8px 0;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .verse {
+      border-left: 4px solid var(--ion-color-primary);
+      
+      h3 {
+        color: var(--ion-color-primary);
       }
     }
 
     .chorus {
-      background: var(--ion-color-light);
-      padding: 16px;
-      border-radius: 8px;
-      margin: 16px 0;
+      border-left: 4px solid var(--ion-color-secondary);
+      background: var(--ion-color-gold-light);
+      
+      h3 {
+        color: var(--ion-color-secondary);
+      }
     }
   }
 }
 
-/* Estilos da Página About */
+/* ===== PÁGINA ABOUT ===== */
+
 .about-container {
   max-width: 800px;
   margin: 0 auto;
@@ -373,25 +517,8 @@ ion-searchbar {
   }
 }
 
-/* Estilos dos Botões */
-ion-button {
-  --border-radius: 8px;
-  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0.3px;
+/* ===== ANIMAÇÕES ===== */
 
-  &[color="primary"] {
-    --background: var(--ion-color-primary);
-  }
-}
-
-/* Estilos do Botão Voltar */
-ion-back-button {
-  --color: white;
-}
-
-/* Animações */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -403,11 +530,86 @@ ion-back-button {
   }
 }
 
-ion-content {
-  animation: fadeIn 0.3s ease-out;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsividade */
+ion-item {
+  animation: fadeInUp 0.5s ease forwards;
+  
+  @for $i from 1 through 20 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+      opacity: 0;
+    }
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (min-width: 768px) {
+  .hymn-list-container {
+    padding: 24px;
+  }
+  
+  ion-item {
+    --min-height: 85px;
+    --padding-start: 24px;
+    --padding-end: 20px;
+    
+    ion-label h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .hymn-detail {
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    .content .verse, .content .chorus {
+      padding: 24px;
+      
+      h3 {
+        font-size: 1.1rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .about-container {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hymn-list-container {
+    max-width: 800px;
+    padding: 32px;
+  }
+  
+  ion-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 16px;
+  }
+  
+  ion-item {
+    margin-bottom: 0;
+  }
+}
+
 @media (max-width: 576px) {
   .about-container {
     padding: 16px;
@@ -415,5 +617,61 @@ ion-content {
 
   .hymn-detail {
     padding: 12px;
+  }
+}
+
+/* ===== TEMA ESCURO ===== */
+
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%);
+  }
+  
+  ion-item {
+    --background: #2d2d2d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .custom-searchbar {
+    --background: rgba(45, 45, 45, 0.95);
+    --color: white;
+  }
+
+  .hymn-detail {
+    h1 {
+      color: var(--ion-color-primary-tint);
+    }
+    
+    .content .verse, .content .chorus {
+      background: #2d2d2d;
+      color: white;
+      
+      p {
+        color: #ffffff;
+      }
+    }
+    
+    .content .chorus {
+      background: rgba(244, 196, 48, 0.1);
+    }
+  }
+}
+
+/* ===== CLASSES UTILITÁRIAS ===== */
+
+.hymn-number-highlight {
+  color: var(--ion-color-secondary);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.featured-hymn {
+  &::before {
+    background: linear-gradient(45deg, var(--ion-color-secondary), var(--ion-color-warning));
+    width: 6px;
+  }
+  
+  ion-label h2 {
+    color: var(--ion-color-primary);
   }
 }

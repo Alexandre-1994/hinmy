@@ -2,6 +2,57 @@
   {
     "id": 1,
     "number": 1,
+    "title": "A-a Pwa Chenin Kot",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A-a pwa chenin Kot",
+          "A fang noun achengicheng",
+          "A-a amwusa ach tipis,",
+          "Sa winiti noun Kot. (2x)"
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Unusen ngaseno ren chaan Jesus",
+          "Nimeti seni ach tipis. (2x)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "number": 2,
+    "title": "A Napanap An Kinas Ren Ach Pupungaw",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A lapalap An kinas ren ach pupungaw",
+          "A tatakis ren foforuch mi ingaw",
+          "Kichmeinisin sia mwanechfeil usun chok sip",
+          "Sia finata ia sipwe feino ia"
+         
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+           "niwinin ach tipis a nom won",
+          "Pwe sipwe kuna ach kinamwe",
+          "Jessu Kraist I ewe Al",
+          "A sip ne aninis non ach riafou"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "number": 3,
     "title": "A Nom Lon Peiasan",
     "language": "unknown",
     "content": [
@@ -34,8 +85,8 @@
     ]
   },
   {
-    "id": 2,
-    "number": 2,
+    "id": 4,
+    "number": 4,
     "title": "A Tori ewe Fansoun mi Fokkun Auchea",
     "language": "unknown",
     "content": [
@@ -68,6 +119,330 @@
         ]
       }
     ]
+  },
+  {
+    "id": 5,
+    "number": 5,
+    "title": "A Tori Fansoun Kokoi won Fonufan",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Kot en ewe epilololun pochokul me popun",
+          "Mettoch meinisin, nang me fonufan",
+          "Ra fis ren Om kapas me Om tufich."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "O en aramas seni pul ka fis ren tufichin Kot",
+          "Ka for pun ningen om Kot, inisum me ngunum",
+          "Kopwe eningano om Kot ren."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Kot en ewe Samolun Samol, Kingen King",
+          "Me popun mettoch meinisin; Fuu me poon ira",
+          "Ra ning ren Om kapas me Om tufich."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "number": 6,
+    "title": "A Wor Emon Mwan A Mak Non Paipen",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A wor emon mwan a mak non Paipen",
+          "A mwan en ekiek",
+          "Pun esap mefi pwe forien Kot",
+          "An tufich meinisin"
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Epwe meta soponon Kot A pwisin apasa",
+          "No epwe pisekini ekana pisek mi chommong",
+          "Ika mano a koruk ikenai, sonap-mawan om fansoun"
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Mi eoch kopwe rang ei sokkun manaw",
+          "Pun kote rukono",
+          "Ren Pisek, money, pwan fonu chommong",
+          "Ka wou ren ikenai"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "number": 7,
+    "title": "A Wor Ew Fonu Fanitach Chon Kraist",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "A wore w fonu fanitach chon Kraist",
+          "Nupwen a wesino ach sai",
+          "Esor riafou epwe witi kich",
+          "Pwe kinamwe chok epwe fis"
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Sipwe menemenoch nupwen sa kuna",
+          "Mesan ach Samon Jesus Kraist",
+          "Chommong million ier",
+          "Sipwe chufengen ren",
+          "Ach King oh Samon Jesus Kraist"
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Sisap lo seni ew leni mi ning",
+          "Sipwe Nom lion tori feinfeino",
+          "Sisap chemeni manawach me nom",
+          "Pun mettoch meinisin repwe fo"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "number": 8,
+    "title": "Ach Chon Amanaw Jesus A nom non Nang",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Chon Amanaw Jesus A nom non Nang ren Kot",
+          "Nge ren An kirokiroch a feitiw fonufan",
+          "A eani cha me fituk, A chochon pwini kich",
+          "Non inisin me pomwan A wewe ngeni kich."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "An umoumoch A napanap.",
+          "An chen a fokkun pwich",
+          "A nenienn neniach,",
+          "A fokkun pwini kich."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "A nikiti An pwapwa A ponuku An ning,",
+          "A eani ach woungaw o pwal ach riafou",
+          "A pwal finata Lukach pwe Epwe nonom non",
+          "A mochen uwanong saram, kinamwe, chen o tong."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Ach feiengaw a mona, ach niuongaw a mwuch,",
+          "Pun ren ach Samol Jusus sa Fokkun chen ren Kot",
+          "Sa fokkun apinukoch o pwapwa ngeni nang."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "number": 9,
+    "title": "Ach Kapongen Ei Ran",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Ach kapongen ei ran mi ouche mi kan apasa",
+          "Merry Christmas ami meinisin",
+          "Ikenai ranin An Jesus uputiw fonufan",
+          "A nikitano ningan, woun, me nenian",
+          "Wesewesen ren fanitom, ennetin pwan fanitei"
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Ifa usun, met ach niffang ngeni Jesus",
+          "Jesus A mochen sipwe fang unus manawach",
+          "Pwe sipwe usun ekewe sourur",
+          "Ra kuta, kuna Jesus fan nimochun netiper"
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Sipwe tumunu, checki-fichi manawach me ikenai",
+          "Pun site kan wewe ngeni ewe King Erotoes",
+          "Ra resin kuta Jesus nge rese kuna pw era kut",
+          "Fan ningeringer me songen netiper"
+        ]
+      }
+    ]
+  }, 
+  {
+    "id": 10,
+    "number": 10,
+    "title": "Ach Kot Mi Tonge Kich Chapur",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Kot mi tonge kich Chapur,",
+          "Pwe A tinato Jesus Kraist;",
+          "Pwe Epwe angasano Kich seni tipis meinisin."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "Sipwe Kinisou ren ewe nifangen Kot",
+          "Ngeni kich chon tipis pwe sipwe manaw ren",
+          "O sipwe feino ren tori ewe manaw",
+          "O-o mwareiti Jesus mi amusano ach tipis."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Meinisin sipwe uta",
+          "Feino mwirin Samon Jesus",
+          "Pwe I mi ach Kompas ennet",
+          "Awena ngeni kich manaw."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Sipwe meireir, pwapwa Chapur,",
+          "Mwareiti Kot mi napanap",
+          "Won fonufan meinisin",
+          "Sipwe Pwapwa Mwareiti Kot."
+        ]
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "number": 11,
+    "title": "Ach Samon A Eketi Kich non Ran in Manawach",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon A eketi kich non ran in manawach",
+          "A kuna kich o masa kich o rongorongo ach fos."
+        ]
+      },
+      {
+        "type": "chorus",
+        "lines": [
+          "A peni kich o pweni kich, a pwan iseis woch poun",
+          "Ach Samon A eketi kich non anach meinisin."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon A eketi kich ne angang en ne ran",
+          "A pwapwa ren ach angangoch, a tina feiengaw."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon A eketi kich ne attaw o ne sai",
+          "Lik meinisin ra nom ne poun, pwan asepwan me no."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon A eketi kich ren ach kokon o mour",
+          "Pwe sosot me aniuaniu a toau seni kich."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon A eketi kich lon anach al en ma",
+          "A eti kich ne feita nang, pwe sipwe nonom ren."
+        ]
+      }
+    ]
+  }, {
+    "id": 12,
+    "number": 12,
+    "title": "Ach Samon Jesus A nom Nang (A Mighty Fortress)",
+    "language": "unknown",
+    "content": [
+      {
+        "type": "verse",
+        "lines": [
+          "Ach Samon Jesus A nom Nang,",
+          "A nemeni nang, fonufan",
+          "A nenetiw won fanufan o kuna mettoch meinisin.",
+          "A manaman o ling o fokun tipachem",
+          "Esor An osupwang, esor An rucola,",
+          "Netipan a pwonueta."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "A mano fan asengesich,",
+          "Ach anumamaw a mor ren",
+          "Nge A pwan manaw sefal rech,",
+          "A feita nang non ning en Kot.",
+          "A fokun peni kich o tungor feiochuch",
+          "Ren Semach Kot non nang, pwe sisap feiengaw,",
+          "Non Ach mamun won fonufan."
+        ]
+      },
+      {
+        "type": "verse",
+        "lines": [
+          "Kich sounang sisap niuokus",
+          "O apinukunukingaw",
+          "Sa tupwon non ach nukunuk,",
+          "Pwe sipwe feioch o sopwoch",
+          "Mun Satan epwe ta, chon nukun repwe kuf",
+          "Chon pinei namanam, repwe ne feiengaw,",
+          "Mwuun Jesus epwe pworacho."
+        ]
+      }
+    ]
   }
+  
+  
+  
+  
+  
+  
+  
+  
 ]
   
