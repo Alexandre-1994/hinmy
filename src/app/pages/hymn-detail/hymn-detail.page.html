@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/hymn-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>Hino {{hymn?.number}}</ion-title>
+    <ion-title>Hinmy {{hymn?.number}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
     
     <div class="content">
       <div [ngClass]="item.type" *ngFor="let item of hymn.content">
-        <h3>{{ item.type === 'verse' ? 'Verso' : 'Refrão' }}</h3>
+        <h3>{{ item.type === 'verse' ? 'Verse' : 'Chorus' }}</h3>
         <p *ngFor="let line of item.lines">{{line}}</p>
       </div>
     </div>
