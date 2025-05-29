@@ -9,25 +9,33 @@ const routes: Routes = [
   },
   {
     path: 'splash',
-    loadChildren: () => import('./pages/splash/splash.module').then(m => m.SplashPageModule)
+    loadChildren: () => import('./pages/splash/splash.module').then(m => m.SplashPageModule),
+    data: { animation: 'splash' }  // ← Identificador para animação
   },
   {
     path: 'hymn-list',
-    loadChildren: () => import('./pages/hymn-list/hymn-list.module').then(m => m.HymnListPageModule)
+    loadChildren: () => import('./pages/hymn-list/hymn-list.module').then(m => m.HymnListPageModule),
+    data: { animation: 'hymn-list' }  // ← Identificador para animação
   },
   {
     path: 'hymn-detail/:id',
-    loadChildren: () => import('./pages/hymn-detail/hymn-detail.module').then(m => m.HymnDetailPageModule)
+    loadChildren: () => import('./pages/hymn-detail/hymn-detail.module').then(m => m.HymnDetailPageModule),
+    data: { animation: 'hymn-detail' }  // ← Identificador para animação
   },
   {
     path: 'about',
-    loadChildren: () => import('./pages/about/about-routing.module').then(m => m.AboutPageRoutingModule)
+    loadChildren: () => import('./pages/about/about-routing.module').then(m => m.AboutPageRoutingModule),
+    data: { animation: 'about' }  // ← Identificador para animação
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { 
+      preloadingStrategy: PreloadAllModules,
+      enableTracing: false,  // ← Desabilitar em produção para performance
+      onSameUrlNavigation: 'reload'  // ← Comportamento para mesma URL
+    })
   ],
   exports: [RouterModule]
 })
