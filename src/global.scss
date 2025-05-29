@@ -252,18 +252,18 @@ ion-header {
     border: 2px solid transparent;
     transition: all 0.3s ease;
     
-    &:hover {
-      border-color: var(--ion-color-secondary);
-      transform: translateY(-1px);
-    }
+    // &:hover {
+    //   border-color: var(--ion-color-secondary);
+    //   transform: translateY(-1px);
+    // }
   }
 
-  &.searchbar-has-focus {
-    .searchbar-input-container {
-      border-color: var(--ion-color-secondary);
-      box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
-    }
-  }
+  // &.searchbar-has-focus {
+  //   .searchbar-input-container {
+  //     border-color: var(--ion-color-secondary);
+  //     box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
+  //   }
+  // }
 }
 
 /* ===== LISTA DE HINOS ===== */
