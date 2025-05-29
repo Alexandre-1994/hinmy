@@ -689,7 +689,6 @@ ion-content.splash-content {
 }
 
 .splash-container {
-  background: #002e5b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -701,26 +700,55 @@ ion-content.splash-content {
   animation: fadeIn 1s ease-out;
 }
 
-/* ===== IMAGEM PRINCIPAL ===== */
-.logo-image {
+/* ===== LOGO SVG PRINCIPAL ===== */
+.logo-svg {
   width: 280px;
   height: 280px;
-  border-radius: 20px;
-  // box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
+  filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.4));
   animation: logoEntrance 1.5s ease-out;
+  position: relative;
+  
+  /* Animações para elementos dentro do SVG */
+  &:hover {
+    animation: logoHover 0.5s ease-in-out;
+  }
+}
+
+/* Container para efeitos adicionais na logo */
+.logo-container {
+  position: relative;
+  display: inline-block;
   margin-bottom: 40px;
   
-  /* Efeito de brilho sutil */
+  /* Efeito de brilho ao redor da logo */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle, rgba(244, 196, 48, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: logoGlow 3s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  /* Efeito de pulse dourado */
   &::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-    border-radius: 20px;
-    animation: shine 3s ease-in-out infinite;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    border: 2px solid var(--ion-color-secondary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: pulseBorder 4s ease-in-out infinite;
+    z-index: -1;
   }
 }
 
@@ -844,7 +872,7 @@ ion-content.splash-content {
   height: 100%;
   background: var(--ion-color-secondary);
   border-radius: 2px;
-  animation: progressLoad 3s ease-in-out infinite;
+  animation: progressLoad 30s linear forwards;
 }
 
 .progress-text {
@@ -852,6 +880,31 @@ ion-content.splash-content {
   color: white;
   opacity: 0.7;
   font-weight: 400;
+  animation: progressTextChange 30s linear forwards;
+}
+
+@keyframes progressTextChange {
+  0% { 
+    opacity: 0.7;
+  }
+  16.66% { 
+    opacity: 1;
+  }
+  33.33% { 
+    opacity: 0.7;
+  }
+  50% { 
+    opacity: 1;
+  }
+  66.66% { 
+    opacity: 0.7;
+  }
+  83.33% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0.7;
+  }
 }
 
 /* ===== ANIMAÇÕES ===== */
@@ -879,13 +932,83 @@ ion-content.splash-content {
   }
 }
 
-@keyframes shine {
-  0%, 100% {
-    transform: translateX(-100%);
+/* ===== ANIMAÇÕES PARA LOGO SVG ===== */
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-10deg);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
   }
   50% {
-    transform: translateX(100%);
+    transform: scale(1.05) rotate(2deg);
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
   }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.4));
+  }
+}
+
+@keyframes logoHover {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes logoGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Animação de rotação suave para elementos circulares no SVG */
+@keyframes gentleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Para animar partes específicas do SVG via CSS */
+.logo-svg svg .stars-circle {
+  animation: gentleRotate 20s linear infinite;
+  transform-origin: center;
+}
+
+.logo-svg svg .chalice {
+  animation: pulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.logo-svg svg .palm-tree {
+  animation: sway 3s ease-in-out infinite;
+  transform-origin: bottom center;
 }
 
 @keyframes spinnerPulse {
@@ -963,20 +1086,41 @@ ion-content.splash-content {
   0% {
     width: 0%;
   }
-  50% {
-    width: 70%;
-  }
   100% {
     width: 100%;
   }
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* ===== DICA DE TAP PARA PULAR ===== */
+.skip-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: white;
+  opacity: 0.5;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ===== RESPONSIVIDADE PARA SVG ===== */
 
 @media (max-width: 480px) {
-  .logo-image {
+  .logo-svg {
     width: 220px;
     height: 220px;
+  }
+  
+  .logo-container {
     margin-bottom: 30px;
   }
   
@@ -1000,9 +1144,12 @@ ion-content.splash-content {
 }
 
 @media (min-width: 768px) {
-  .logo-image {
+  .logo-svg {
     width: 320px;
     height: 320px;
+  }
+  
+  .logo-container {
     margin-bottom: 50px;
   }
   
@@ -1022,7 +1169,7 @@ ion-content.splash-content {
 }
 
 @media (min-width: 1024px) {
-  .logo-image {
+  .logo-svg {
     width: 360px;
     height: 360px;
   }

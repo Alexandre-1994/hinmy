@@ -1,26 +1,36 @@
-<ion-content class="splash-content">
+<ion-content class="splash-content" (click)="skipSplash()">
   <div class="splash-container">
     
-    <!-- Imagem Principal do Logo -->
-    <img src="assets/images/bitmap.svg" 
-         alt="Aninnisn Ngunuk Logo" 
-         class="logo-image">
-
-    <!-- Texto de Boas-Vindas -->
-    <h1 class="welcome-text">Kounún Mwareiti</h1>
+    <!-- Logo SVG Principal com Animações -->
+    <div class="logo-container">
+      <object data="assets/images/bitmap.svg" 
+              type="image/svg+xml" 
+              class="logo-svg"
+              alt="Aninnisn Ngunuk Logo">
+              
+        <!-- Fallback caso o SVG não carregue -->
+        <img src="assets/images/bitmap.svg" 
+             alt="Aninnisn Ngunuk Logo" 
+             class="logo-svg">
+             
+      </object>
+      <h1 style="color: #f4c430; font-size: 30px; font-weight: 700;">Kounún Mwareiti</h1>
+      <p style="color: #f4c430; font-size: 20px; font-weight: bold;"> Song of Prise</p>
+      
+    </div>
 
     <!-- Spinner de Loading -->
-    <ion-spinner name="crescent" class="splash-spinner"></ion-spinner>
-    
+    <!-- <ion-spinner name="crescent" class="splash-spinner"></ion-spinner> -->
+   
     <!-- Texto de Loading -->
-    <!-- <p class="loading-text">Carregando hinos</p> -->
+    <!-- <p class="loading-text">  .. </p> -->
 
-    <!-- Indicador de Progresso (Opcional) -->
+    <!-- Indicador de Progresso Sincronizado -->
     <div class="progress-indicator">
       <div class="progress-bar">
         <div class="progress-fill"></div>
       </div>
-      <p class="progress-text">Preparing musical experience...</p>
+      <p class="progress-text">{{ progressText }}</p>
     </div>
 
     <!-- Elementos Decorativos -->
@@ -36,5 +46,8 @@
       <div class="background-circle circle-2"></div>
       <div class="background-circle circle-3"></div>
     </div>
+
+    <!-- Dica de tap para pular (opcional) -->
+    <p class="skip-hint">Tap to continue</p>
   </div>
 </ion-content>
