@@ -16,6 +16,6 @@ export class SplashPage implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.router.navigate(['/hymn-list']);
-    }, 2000);
+    }, 30000);
   }
 }

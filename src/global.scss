@@ -675,3 +675,355 @@ ion-item {
     color: var(--ion-color-primary);
   }
 }
+
+/* ===== SPLASH SCREEN COM IMAGEM ORIGINAL ===== */
+
+ion-content.splash-content {
+  --background: #1e3a8a;
+  --color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.splash-container {
+  background: #002e5b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  animation: fadeIn 1s ease-out;
+}
+
+/* ===== IMAGEM PRINCIPAL ===== */
+.logo-image {
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  // box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: logoEntrance 1.5s ease-out;
+  margin-bottom: 40px;
+  
+  /* Efeito de brilho sutil */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    border-radius: 20px;
+    animation: shine 3s ease-in-out infinite;
+  }
+}
+
+/* ===== SPINNER ELEGANTE ===== */
+.splash-spinner {
+  --color: var(--ion-color-secondary);
+  transform: scale(1.8);
+  margin: 30px 0 20px 0;
+  filter: drop-shadow(0 2px 8px rgba(244, 196, 48, 0.4));
+  animation: spinnerPulse 2s ease-in-out infinite;
+}
+
+/* ===== TEXTO DE LOADING ===== */
+.loading-text {
+  font-size: 1.1rem;
+  color: white;
+  opacity: 0.9;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  animation: loadingDots 2s ease-in-out infinite;
+  margin-top: 20px;
+}
+
+/* ===== ELEMENTOS DECORATIVOS ===== */
+.decorative-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Partículas flutuantes */
+.particle {
+  position: absolute;
+  color: var(--ion-color-secondary);
+  opacity: 0;
+  animation: floatParticle 4s ease-in-out infinite;
+  font-size: 20px;
+}
+
+.particle:nth-child(1) {
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+  right: 15%;
+  top: 30%;
+  animation-delay: 1s;
+  font-size: 16px;
+}
+
+.particle:nth-child(3) {
+  left: 20%;
+  bottom: 25%;
+  animation-delay: 2s;
+  font-size: 24px;
+}
+
+.particle:nth-child(4) {
+  right: 25%;
+  bottom: 35%;
+  animation-delay: 3s;
+  font-size: 18px;
+}
+
+/* Círculos de fundo */
+.background-circle {
+  position: absolute;
+  border: 2px solid rgba(244, 196, 48, 0.1);
+  border-radius: 50%;
+  animation: expandCircle 4s ease-in-out infinite;
+}
+
+.circle-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 150px;
+  height: 150px;
+  bottom: 15%;
+  right: -5%;
+  animation-delay: 2s;
+}
+
+.circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 60%;
+  left: 5%;
+  animation-delay: 1s;
+}
+
+/* ===== INDICADOR DE PROGRESSO ===== */
+.progress-indicator {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--ion-color-secondary);
+  border-radius: 2px;
+  animation: progressLoad 3s ease-in-out infinite;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: white;
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* ===== ANIMAÇÕES ===== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes shine {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spinnerPulse {
+  0%, 100% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    color: white;
+    text-shadow: 0.25em 0 0 transparent,
+                 0.5em 0 0 transparent,
+                 0.75em 0 0 transparent;
+  }
+  25% {
+    color: white;
+    text-shadow: 0.25em 0 0 var(--ion-color-secondary),
+                 0.5em 0 0 transparent,
+                 0.75em 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0.25em 0 0 var(--ion-color-secondary),
+                 0.5em 0 0 var(--ion-color-secondary),
+                 0.75em 0 0 transparent;
+  }
+  75% {
+    text-shadow: 0.25em 0 0 var(--ion-color-secondary),
+                 0.5em 0 0 var(--ion-color-secondary),
+                 0.5em 0 0 var(--ion-color-secondary);
+  }
+  80%, 100% {
+    text-shadow: 0.25em 0 0 transparent,
+                 0.5em 0 0 transparent,
+                 0.75em 0 0 transparent;
+  }
+}
+
+@keyframes floatParticle {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg) scale(0.5);
+  }
+  25% {
+    opacity: 0.8;
+    transform: translateY(-20px) rotate(90deg) scale(1);
+  }
+  75% {
+    opacity: 0.6;
+    transform: translateY(-40px) rotate(180deg) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) rotate(270deg) scale(0.3);
+  }
+}
+
+@keyframes expandCircle {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+@keyframes progressLoad {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 480px) {
+  .logo-image {
+    width: 220px;
+    height: 220px;
+    margin-bottom: 30px;
+  }
+  
+  .splash-spinner {
+    transform: scale(1.5);
+    margin: 20px 0 15px 0;
+  }
+  
+  .loading-text {
+    font-size: 1rem;
+  }
+  
+  .progress-indicator {
+    bottom: 60px;
+    width: 180px;
+  }
+  
+  .particle {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-image {
+    width: 320px;
+    height: 320px;
+    margin-bottom: 50px;
+  }
+  
+  .splash-spinner {
+    transform: scale(2);
+    margin: 40px 0 25px 0;
+  }
+  
+  .loading-text {
+    font-size: 1.2rem;
+  }
+  
+  .progress-indicator {
+    bottom: 100px;
+    width: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-image {
+    width: 360px;
+    height: 360px;
+  }
+}
