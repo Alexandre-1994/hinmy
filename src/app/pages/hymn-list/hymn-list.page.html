@@ -43,8 +43,8 @@
   <ion-toolbar color="primary" class="search-toolbar">
     <ion-searchbar
       [(ngModel)]="searchTerm"
-      (ionChange)="search()"
-      placeholder="Search by title or number"
+      (ionInput)="onSearchInput($event)"
+      placeholder="Buscar por título ou número"
       animated="true"
       color="light"
       class="custom-searchbar ion-padding-horizontal"

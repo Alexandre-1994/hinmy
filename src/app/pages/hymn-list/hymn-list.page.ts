@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HymnService } from '../../services/hymn.service';
 import { Hymn } from '../../interfaces/hymn.interface';
+import { Subject, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-hymn-list',
@@ -19,10 +20,14 @@ export class HymnListPage implements OnInit, OnDestroy {
   searchTerm: string = '';
   isLoading: boolean = true;
   
+  // Search Subjects
+  private searchSubject = new Subject<string>();
+  private destroy$ = new Subject<void>();
+  
   // ===== CONFIGURAÇÕES DE CONTROLE DE FONTE =====
   currentFontSize: number = 16;      // Tamanho padrão
   minFontSize: number = 12;          // Tamanho mínimo
-  maxFontSize: number = 24;          // Tamanho máximo (menor que detail para não quebrar layout)
+  maxFontSize: number = 24;          // Tamanho máximo
   fontSizeStep: number = 2;          // Incremento/decremento
   
   // ===== FEEDBACK VISUAL =====
@@ -33,7 +38,18 @@ export class HymnListPage implements OnInit, OnDestroy {
   // ===== PERSISTÊNCIA =====
   private readonly FONT_SIZE_KEY = 'hymn-list-font-size';
 
-  constructor(private hymnService: HymnService) {}
+  constructor(private hymnService: HymnService) {
+    // Configure search with debounce
+    this.searchSubject
+      .pipe(
+        debounceTime(300), // Wait 300ms after last input
+        distinctUntilChanged(), // Only emit if value changed
+        takeUntil(this.destroy$)
+      )
+      .subscribe(searchTerm => {
+        this.performSearch(searchTerm);
+      });
+  }
 
   ngOnInit() {
     this.loadSavedFontSize();
@@ -41,7 +57,10 @@ export class HymnListPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    // Limpar timeout se existir
+    // Cleanup subscriptions
+    this.destroy$.next();
+    this.destroy$.complete();
+    
     if (this.feedbackTimeout) {
       clearTimeout(this.feedbackTimeout);
     }
@@ -56,6 +75,32 @@ export class HymnListPage implements OnInit, OnDestroy {
       },
       error: (error) => {
         console.error('Error loading hymns:', error);
+        this.isLoading = false;
+      }
+    });
+  }
+
+  // New search methods
+  onSearchInput(event: any) {
+    const term = event.target.value || '';
+    this.searchSubject.next(term.trim());
+  }
+
+  private performSearch(term: string) {
+    this.isLoading = true;
+    
+    if (term === '') {
+      this.loadHymns();
+      return;
+    }
+
+    this.hymnService.searchHymns(term).subscribe({
+      next: (hymns) => {
+        this.hymns = hymns;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error searching hymns:', error);
         this.isLoading = false;
       }
     });
@@ -95,26 +140,6 @@ export class HymnListPage implements OnInit, OnDestroy {
     this.saveFontSize();
     this.showFontChangeFeedback('Reset font');
     this.provideFeedback();
-  }
-
-  // ===== MÉTODOS DE BUSCA (SEUS EXISTENTES) =====
-
-  search() {
-    this.isLoading = true;
-    if (this.searchTerm.trim() !== '') {
-      this.hymnService.searchHymns(this.searchTerm).subscribe({
-        next: (hymns) => {
-          this.hymns = hymns;
-          this.isLoading = false;
-        },
-        error: (error) => {
-          console.error('Error searching hymns:', error);
-          this.isLoading = false;
-        }
-      });
-    } else {
-      this.loadHymns();
-    }
   }
 
   // Track by function for better performance

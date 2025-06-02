@@ -9,6 +9,7 @@ import { Hymn } from '../interfaces/hymn.interface';
 export class HymnService {
   private hymns: Hymn[] = [];
   private hymnsSubject = new BehaviorSubject<Hymn[]>([]);
+  private normalizeString = (str: string) => str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   constructor(private http: HttpClient) {
     this.loadHymns();
@@ -19,10 +20,22 @@ export class HymnService {
   }
 
   searchHymns(query: string): Observable<Hymn[]> {
-    const filteredHymns = this.hymns.filter(hymn => 
-      hymn.title.toLowerCase().includes(query.toLowerCase()) ||
-      hymn.number.toString().includes(query.toString())
-    );
+    const normalizedQuery = this.normalizeString(query);
+    
+    const filteredHymns = this.hymns.filter(hymn => {
+      // Normalize the title for better search
+      const normalizedTitle = this.normalizeString(hymn.title);
+      const numberStr = hymn.number.toString();
+      
+      // Check if it's a number search
+      if (/^\d+$/.test(query)) {
+        return numberStr.startsWith(query);
+      }
+      
+      // Check title match
+      return normalizedTitle.includes(normalizedQuery);
+    });
+
     return new BehaviorSubject(filteredHymns).asObservable();
   }
 
