@@ -1,0 +1,222 @@
+/* ===== CSS PARA CONTROLE DE FONTE - FUNCIONALIDADE NOVA ===== */
+
+/* ===== VARIÁVEL CSS DINÂMICA ===== */
+.hymn-list-content, .hymn-content {
+    /* Variável controlada pelo TypeScript */
+    --dynamic-font-size: 16px;
+    --base-line-height: 1.6;
+  }
+  
+  /* ===== CONTROLES DE FONTE NO HEADER ===== */
+  .font-size-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    min-width: 55px;
+    justify-content: center;
+    margin: 0 4px;
+    
+    ion-icon {
+      font-size: 0.9rem;
+    }
+    
+    .font-size-text {
+      font-weight: 600;
+      min-width: 18px;
+      text-align: center;
+    }
+  }
+  
+  /* Separador entre controles de fonte e outros botões */
+  .button-separator {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 8px;
+  }
+  
+  /* Botões de controle de fonte */
+  ion-buttons ion-button {
+    transition: all 0.3s ease;
+    
+    &:disabled {
+      --color: rgba(255, 255, 255, 0.4);
+      opacity: 0.5;
+    }
+    
+    &:hover:not(:disabled) {
+      --color: var(--ion-color-secondary);
+      --background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+    
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+  }
+  
+  /* ===== FEEDBACK VISUAL ===== */
+  .font-feedback {
+    position: fixed;
+    top: 160px; /* Ajuste conforme sua altura de header */
+    left: 50%;
+    transform: translateX(-50%) translateY(-30px);
+    background: var(--ion-color-primary);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 16px rgba(9, 46, 135, 0.4);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    &.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    ion-icon {
+      font-size: 1rem;
+      color: var(--ion-color-secondary);
+    }
+  }
+  
+  /* ===== APLICAÇÃO DA FONTE DINÂMICA ===== */
+  
+  /* Para página de lista */
+  .hymn-list-content {
+    .hymn-title-item {
+      font-size: var(--dynamic-font-size);
+      transition: font-size 0.3s ease;
+    }
+    
+    .hymn-subtitle {
+      font-size: calc(var(--dynamic-font-size) * 0.85);
+      transition: font-size 0.3s ease;
+    }
+    
+    .empty-message {
+      font-size: calc(var(--dynamic-font-size) * 1.1);
+      transition: font-size 0.3s ease;
+    }
+  }
+  
+  /* Para página de detalhes */
+  .hymn-content {
+    .hymn-line {
+      font-size: var(--dynamic-font-size);
+      line-height: var(--base-line-height);
+      transition: font-size 0.3s ease;
+    }
+    
+    .section-title {
+      font-size: calc(var(--dynamic-font-size) * 1.1);
+      transition: font-size 0.3s ease;
+    }
+    
+    .hymn-title {
+      font-size: calc(var(--dynamic-font-size) * 1.6);
+      transition: font-size 0.3s ease;
+    }
+  }
+  
+  /* ===== RESPONSIVIDADE MOBILE ===== */
+  @media (max-width: 480px) {
+    .font-size-indicator {
+      font-size: 0.75rem;
+      padding: 0 8px;
+      min-width: 50px;
+      margin: 0 2px;
+      
+      .font-size-text {
+        min-width: 16px;
+      }
+    }
+    
+    ion-buttons ion-button {
+      --padding-start: 6px;
+      --padding-end: 6px;
+    }
+    
+    .button-separator {
+      margin: 0 4px;
+    }
+    
+    .font-feedback {
+      left: 16px;
+      right: 16px;
+      transform: translateY(-30px);
+      font-size: 0.8rem;
+      
+      &.show {
+        transform: translateY(0);
+      }
+    }
+  }
+  
+  /* ===== ACESSIBILIDADE ===== */
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .font-feedback {
+      background: #000000;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+    
+    .font-size-indicator {
+      background: rgba(0, 0, 0, 0.8);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .hymn-title-item,
+    .hymn-subtitle,
+    .empty-message,
+    .hymn-line,
+    .section-title,
+    .hymn-title,
+    .font-feedback,
+    ion-buttons ion-button {
+      transition: none;
+    }
+  }
+
+/* ===== HEADER STYLES ===== */
+ion-header ion-toolbar {
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+
+  ion-grid {
+    padding: 0;
+  }
+
+  .title-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+  }
+
+  ion-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+  }
+}
