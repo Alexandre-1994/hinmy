@@ -36,11 +36,14 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-/* Estilos Globais */
-/* ===== PALETA DE CORES IONIC - APLICATIVO DE HINOS ===== */
+/* === OTIMIZAÇÕES DE PERFORMANCE === */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* === PALETA DE CORES === */
 :root {
-  /* === CORES PRIMÁRIAS === */
   --ion-color-primary: #092e87;
   --ion-color-primary-rgb: 9, 46, 135;
   --ion-color-primary-contrast: #ffffff;
@@ -48,13 +51,22 @@
   --ion-color-primary-shade: #082877;
   --ion-color-primary-tint: #234393;
 
-  /* === CORES SECUNDÁRIAS (Saffron Dourado) === */
   --ion-color-secondary: #f4c430;
   --ion-color-secondary-rgb: 244, 196, 48;
   --ion-color-secondary-contrast: #092e87;
   --ion-color-secondary-contrast-rgb: 9, 46, 135;
   --ion-color-secondary-shade: #d7ac2a;
   --ion-color-secondary-tint: #f5ca45;
+
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+
+  --ion-text-color: #2c3e50;
+  --ion-text-color-rgb: 44, 62, 80;
+  --ion-color-step-600: #7f8c8d;
+  --ion-color-step-400: #95a5a6;
 
   /* === CORES TERCIÁRIAS (Azul Celeste) === */
   --ion-color-tertiary: #1a4db5;
@@ -75,16 +87,12 @@
   /* === CORES DE AVISO === */
   --ion-color-warning: #ffc107;
   --ion-color-warning-rgb: 255, 193, 7;
-  --ion-color-warning-contrast: #092e87;
-  --ion-color-warning-contrast-rgb: 9, 46, 135;
   --ion-color-warning-shade: #e0aa06;
   --ion-color-warning-tint: #ffc720;
 
   /* === CORES DE PERIGO === */
   --ion-color-danger: #dc3545;
   --ion-color-danger-rgb: 220, 53, 69;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
   --ion-color-danger-shade: #c22e3c;
   --ion-color-danger-tint: #df4958;
 
@@ -111,33 +119,6 @@
   --ion-color-light-contrast-rgb: 9, 46, 135;
   --ion-color-light-shade: #dadcdd;
   --ion-color-light-tint: #f9fafb;
-
-  /* === BACKGROUNDS === */
-  --ion-background-color: #ffffff;
-  --ion-background-color-rgb: 255, 255, 255;
-  --ion-item-background: #ffffff;
-  --ion-card-background: #ffffff;
-
-  /* === CORES DE TEXTO === */
-  --ion-text-color: #2c3e50;
-  --ion-text-color-rgb: 44, 62, 80;
-  --ion-color-step-600: #7f8c8d;
-  --ion-color-step-400: #95a5a6;
-
-  /* === CORES PERSONALIZADAS === */
-  --ion-color-gold-light: #fef9e7;
-  --ion-color-gold-light-rgb: 254, 249, 231;
-  --ion-color-gold-light-contrast: #092e87;
-  --ion-color-gold-light-contrast-rgb: 9, 46, 135;
-  --ion-color-gold-light-shade: #e0dcc7;
-  --ion-color-gold-light-tint: #fefae9;
-
-  --ion-color-blue-light: #f0f4ff;
-  --ion-color-blue-light-rgb: 240, 244, 255;
-  --ion-color-blue-light-contrast: #092e87;
-  --ion-color-blue-light-contrast-rgb: 9, 46, 135;
-  --ion-color-blue-light-shade: #d3d7e0;
-  --ion-color-blue-light-tint: #f2f5ff;
 
   /* === GRADIENTES === */
   --ion-gradient-primary: linear-gradient(135deg, #092e87 0%, #1a4db5 100%);
@@ -168,14 +149,29 @@
   --ion-segment-color: var(--ion-color-medium);
   --ion-segment-color-checked: var(--ion-color-primary);
   --ion-segment-indicator-color: var(--ion-color-secondary);
-}
 
-/* ===== ESTILOS GLOBAIS ===== */
+  /* === CORES PERSONALIZADAS === */
+  --ion-color-gold-light: #fef9e7;
+  --ion-color-gold-light-rgb: 254, 249, 231;
+  --ion-color-gold-light-contrast: #092e87;
+  --ion-color-gold-light-contrast-rgb: 9, 46, 135;
+  --ion-color-gold-light-shade: #e0dcc7;
+  --ion-color-gold-light-tint: #fefae9;
+
+  --ion-color-blue-light: #f0f4ff;
+  --ion-color-blue-light-rgb: 240, 244, 255;
+  --ion-color-blue-light-contrast: #092e87;
+  --ion-color-blue-light-contrast-rgb: 9, 46, 135;
+  --ion-color-blue-light-shade: #d3d7e0;
+  --ion-color-blue-light-tint: #f2f5ff;
+}
 
 /* ===== ESTILOS GLOBAIS ===== */
 
 ion-content {
   --background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%);
+  contain: content;
+  will-change: scroll-position;
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -215,6 +211,7 @@ ion-header {
     --border-color: transparent;
     --border-width: 0;
     --min-height: 60px;
+    contain: content;
     
     ion-title {
       font-weight: 600;
@@ -226,7 +223,8 @@ ion-header {
     ion-button {
       --border-radius: 50%;
       --box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
+      transition: transform 0.2s ease;
+      contain: content;
       
       &:disabled {
         --color: rgba(255, 255, 255, 0.4);
@@ -335,13 +333,14 @@ ion-header {
 
 .custom-searchbar {
   --background: rgba(255, 255, 255, 0.95);
-  --color: var(--ion-color-dark);
+  --color: var(--ion-color-primary);
   --placeholder-color: var(--ion-color-medium);
   --icon-color: var(--ion-color-primary);
   --clear-button-color: var(--ion-color-medium);
-  --border-radius: 25px;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --backdrop-filter: blur(10px);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  contain: content;
+  will-change: transform;
   
   margin: 0;
   padding: 0;
@@ -385,22 +384,10 @@ ion-header {
   margin: 0 8px;
 }
 
-/* ===== SEARCHBAR COM MELHOR CONTRASTE ===== */
-.custom-searchbar {
-  --background: rgba(255, 255, 255, 0.95);
-  --color: var(--ion-color-primary);
-  --placeholder-color: var(--ion-color-medium);
-  --icon-color: var(--ion-color-primary);
-  --clear-button-color: var(--ion-color-medium);
-  --border-radius: 12px;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
-}
-
 /* ===== FEEDBACK VISUAL ===== */
 .font-feedback {
-  position: fixed;
-  top: 120px; /* Abaixo do header duplo */
+  // position: fixed;
+  top: auto; /* Abaixo do header duplo */
   left: 50%;
   transform: translateX(-50%) translateY(-30px);
   background: var(--ion-color-secondary);
@@ -439,11 +426,12 @@ ion-header {
 ion-list {
   background: transparent;
   padding: 0;
+  contain: content;
 }
 
 .hymn-item {
   /* Fundo azul escuro semi-transparente (como nos detalhes) */
-  --background:rgb(9 46 135);
+  --background: rgb(9 46 135);
   --border-color: transparent;
   --inner-border-width: 0;
   --padding-start: 20px;
@@ -453,11 +441,13 @@ ion-list {
   margin-bottom: 12px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
   border-left: 4px solid var(--ion-color-secondary);
+  contain: content;
+  will-change: transform;
+  transform: translateZ(0);
   
   /* Efeito hover melhorado */
   &:hover {
@@ -500,6 +490,7 @@ ion-label {
     margin: 0;
     transition: all 0.3s ease;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    contain: content;
     
     /* Número do hino em dourado */
     &::first-letter {
@@ -532,22 +523,12 @@ ion-label {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
-  text-align: center;
+  padding: 32px;
+  contain: content;
   
   ion-icon {
-    font-size: 3.5rem;
-    color: rgb(9 46 135); /* Branco transparente */
+    font-size: 48px;
     margin-bottom: 16px;
-  }
-  
-  .empty-message {
-    color: rgb(9 46 135); /* TEXTO BRANCO */
-    font-size: calc(var(--dynamic-font-size) * 1.1);
-    font-weight: 500;
-    margin: 0;
-    transition: font-size 0.3s ease;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -1588,6 +1569,8 @@ ion-content.splash-content {
 }
 
 .loading-skeleton {
+  contain: content;
+  
   .skeleton-title {
     height: 32px;
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);

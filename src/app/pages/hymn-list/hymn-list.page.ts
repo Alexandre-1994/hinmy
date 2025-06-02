@@ -17,6 +17,7 @@ export class HymnListPage implements OnInit, OnDestroy {
   
   hymns: Hymn[] = [];
   searchTerm: string = '';
+  isLoading: boolean = true;
   
   // ===== CONFIGURAÇÕES DE CONTROLE DE FONTE =====
   currentFontSize: number = 16;      // Tamanho padrão
@@ -35,13 +36,8 @@ export class HymnListPage implements OnInit, OnDestroy {
   constructor(private hymnService: HymnService) {}
 
   ngOnInit() {
-    // Carregar tamanho de fonte salvo
     this.loadSavedFontSize();
-    
-    // Carregar hinos
-    this.hymnService.getHymns().subscribe(hymns => {
-      this.hymns = hymns;
-    });
+    this.loadHymns();
   }
 
   ngOnDestroy() {
@@ -49,6 +45,20 @@ export class HymnListPage implements OnInit, OnDestroy {
     if (this.feedbackTimeout) {
       clearTimeout(this.feedbackTimeout);
     }
+  }
+
+  private loadHymns() {
+    this.isLoading = true;
+    this.hymnService.getHymns().subscribe({
+      next: (hymns) => {
+        this.hymns = hymns;
+        this.isLoading = false;
+      },
+      error: (error) => {
+        console.error('Error loading hymns:', error);
+        this.isLoading = false;
+      }
+    });
   }
 
   // ===== MÉTODOS DE CONTROLE DE FONTE =====
@@ -90,15 +100,26 @@ export class HymnListPage implements OnInit, OnDestroy {
   // ===== MÉTODOS DE BUSCA (SEUS EXISTENTES) =====
 
   search() {
+    this.isLoading = true;
     if (this.searchTerm.trim() !== '') {
-      this.hymnService.searchHymns(this.searchTerm).subscribe(hymns => {
-        this.hymns = hymns;
+      this.hymnService.searchHymns(this.searchTerm).subscribe({
+        next: (hymns) => {
+          this.hymns = hymns;
+          this.isLoading = false;
+        },
+        error: (error) => {
+          console.error('Error searching hymns:', error);
+          this.isLoading = false;
+        }
       });
     } else {
-      this.hymnService.getHymns().subscribe(hymns => {
-        this.hymns = hymns;
-      });
+      this.loadHymns();
     }
+  }
+
+  // Track by function for better performance
+  trackByHymnId(index: number, hymn: Hymn): number {
+    return hymn.id;
   }
 
   // ===== MÉTODOS PRIVADOS DE FONTE =====

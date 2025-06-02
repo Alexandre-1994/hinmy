@@ -68,9 +68,17 @@
   </div>
   
   <div class="hymn-list-container">
-    <ion-list>
+    <!-- Loading Skeleton -->
+    <div class="loading-skeleton" *ngIf="isLoading">
+      <div class="skeleton-item" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+        <div class="skeleton-title"></div>
+      </div>
+    </div>
+
+    <!-- Lista de Hinos -->
+    <ion-list *ngIf="!isLoading">
       <ion-item 
-        *ngFor="let hymn of hymns" 
+        *ngFor="let hymn of hymns; trackBy: trackByHymnId" 
         [routerLink]="['/hymn-detail', hymn.id]" 
         detail="false"
         class="hymn-item">
@@ -82,9 +90,17 @@
       </ion-item>
     </ion-list>
 
-    <div class="empty-state" *ngIf="hymns.length === 0">
+    <!-- Estado vazio -->
+    <div class="empty-state" *ngIf="!isLoading && hymns.length === 0">
       <ion-icon name="musical-notes-outline"></ion-icon>
       <p class="empty-message">Nothing found. Please check your input</p>
     </div>
   </div>
+
+  <!-- Loading Spinner -->
+  <ion-spinner 
+    *ngIf="isLoading" 
+    name="crescent" 
+    class="loading-spinner">
+  </ion-spinner>
 </ion-content>
