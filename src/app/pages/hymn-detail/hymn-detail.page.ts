@@ -60,7 +60,7 @@ export class HymnDetailPage implements OnInit, OnDestroy {
     if (this.currentFontSize < this.maxFontSize) {
       this.currentFontSize += this.fontSizeStep;
       this.saveFontSize();
-      this.showFontChangeFeedback(`Fonte: ${this.currentFontSize}px`);
+      this.showFontChangeFeedback(`Font: ${this.currentFontSize}px`);
       this.provideFeedback();
     }
   }
@@ -72,7 +72,7 @@ export class HymnDetailPage implements OnInit, OnDestroy {
     if (this.currentFontSize > this.minFontSize) {
       this.currentFontSize -= this.fontSizeStep;
       this.saveFontSize();
-      this.showFontChangeFeedback(`Fonte: ${this.currentFontSize}px`);
+      this.showFontChangeFeedback(`Font: ${this.currentFontSize}px`);
       this.provideFeedback();
     }
   }
@@ -83,7 +83,7 @@ export class HymnDetailPage implements OnInit, OnDestroy {
   resetFontSize(): void {
     this.currentFontSize = 16; // Tamanho padrão
     this.saveFontSize();
-    this.showFontChangeFeedback('Fonte resetada');
+    this.showFontChangeFeedback('Reset font');
     this.provideFeedback();
   }
 
@@ -124,7 +124,7 @@ export class HymnDetailPage implements OnInit, OnDestroy {
     try {
       localStorage.setItem(this.FONT_SIZE_KEY, this.currentFontSize.toString());
     } catch (error) {
-      console.warn('Não foi possível salvar o tamanho da fonte:', error);
+      console.warn('Unable to save font size:', error);
     }
   }
 
@@ -142,7 +142,7 @@ export class HymnDetailPage implements OnInit, OnDestroy {
         }
       }
     } catch (error) {
-      console.warn('Não foi possível carregar o tamanho da fonte salvo:', error);
+      console.warn('The saved font size could not be loaded:', error);
       // Usar tamanho padrão em caso de erro
       this.currentFontSize = 16;
     }
@@ -156,12 +156,12 @@ export class HymnDetailPage implements OnInit, OnDestroy {
   getFontSizeDescription(): string {
     const percentage = Math.round((this.currentFontSize / 16) * 100);
     
-    if (percentage <= 75) return 'Muito pequena';
-    if (percentage <= 87) return 'Pequena';
+    if (percentage <= 75) return 'Very small';
+    if (percentage <= 87) return 'Small';
     if (percentage === 100) return 'Normal';
-    if (percentage <= 125) return 'Grande';
-    if (percentage <= 150) return 'Muito grande';
-    return 'Extra grande';
+    if (percentage <= 125) return 'Large';
+    if (percentage <= 150) return 'Too Large';
+    return 'Extra Large';
   }
 
   /**
