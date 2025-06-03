@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { VersionService } from '../../services/version.service';
 
 @Component({
   selector: 'app-about',
@@ -11,5 +12,9 @@ import { RouterModule } from '@angular/router';
   imports: [IonicModule, CommonModule, RouterModule]
 })
 export class AboutPage {
-  constructor() { }
+  version: string;
+
+  constructor(private versionService: VersionService) {
+    this.version = this.versionService.getFullVersion();
+  }
 }
