@@ -91,16 +91,17 @@
     </ion-list>
 
     <!-- Estado vazio -->
-    <div class="empty-state" *ngIf="!isLoading && hymns.length === 0">
+    <div class="empty-state" *ngIf="shouldShowEmptyState()">
       <ion-icon name="musical-notes-outline"></ion-icon>
       <p class="empty-message">Nothing found. Please check your input</p>
     </div>
   </div>
 
-  <!-- Loading Spinner -->
-  <ion-spinner 
-    *ngIf="isLoading" 
-    name="crescent" 
-    class="loading-spinner">
-  </ion-spinner>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" *ngIf="isLoading">
+    <ion-spinner 
+      name="crescent" 
+      class="loading-spinner">
+    </ion-spinner>
+  </div>
 </ion-content>

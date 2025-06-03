@@ -19,6 +19,11 @@ export class HymnListPage implements OnInit, OnDestroy {
   hymns: Hymn[] = [];
   searchTerm: string = '';
   isLoading: boolean = true;
+  isTransitioning: boolean = false;
+  
+  // Timing constants
+  private readonly LOADING_DURATION = 300; // Tempo total do loading
+  private readonly TRANSITION_DELAY = 50;  // Delay para animações suaves
   
   // Search Subjects
   private searchSubject = new Subject<string>();
@@ -39,11 +44,10 @@ export class HymnListPage implements OnInit, OnDestroy {
   private readonly FONT_SIZE_KEY = 'hymn-list-font-size';
 
   constructor(private hymnService: HymnService) {
-    // Configure search with debounce
     this.searchSubject
       .pipe(
-        debounceTime(300), // Wait 300ms after last input
-        distinctUntilChanged(), // Only emit if value changed
+        debounceTime(300),
+        distinctUntilChanged(),
         takeUntil(this.destroy$)
       )
       .subscribe(searchTerm => {
@@ -68,14 +72,31 @@ export class HymnListPage implements OnInit, OnDestroy {
 
   private loadHymns() {
     this.isLoading = true;
+    this.isTransitioning = true;
+    
     this.hymnService.getHymns().subscribe({
       next: (hymns) => {
-        this.hymns = hymns;
-        this.isLoading = false;
+        const newHymns = hymns;
+        
+        // Primeiro timeout para o loading
+        setTimeout(() => {
+          this.isLoading = false;
+          
+          // Segundo timeout para a transição dos itens
+          setTimeout(() => {
+            this.hymns = newHymns;
+            
+            // Terceiro timeout para finalizar a transição
+            setTimeout(() => {
+              this.isTransitioning = false;
+            }, this.TRANSITION_DELAY);
+          }, this.TRANSITION_DELAY);
+        }, this.LOADING_DURATION);
       },
       error: (error) => {
         console.error('Error loading hymns:', error);
         this.isLoading = false;
+        this.isTransitioning = false;
       }
     });
   }
@@ -87,23 +108,43 @@ export class HymnListPage implements OnInit, OnDestroy {
   }
 
   private performSearch(term: string) {
-    this.isLoading = true;
-    
-    if (term === '') {
+    if (!term.trim()) {
       this.loadHymns();
       return;
     }
 
+    this.isLoading = true;
+    this.isTransitioning = true;
+    
     this.hymnService.searchHymns(term).subscribe({
       next: (hymns) => {
-        this.hymns = hymns;
-        this.isLoading = false;
+        const newHymns = hymns;
+        
+        // Primeiro timeout para o loading
+        setTimeout(() => {
+          this.isLoading = false;
+          
+          // Segundo timeout para a transição dos itens
+          setTimeout(() => {
+            this.hymns = newHymns;
+            
+            // Terceiro timeout para finalizar a transição
+            setTimeout(() => {
+              this.isTransitioning = false;
+            }, this.TRANSITION_DELAY);
+          }, this.TRANSITION_DELAY);
+        }, this.LOADING_DURATION);
       },
       error: (error) => {
         console.error('Error searching hymns:', error);
         this.isLoading = false;
+        this.isTransitioning = false;
       }
     });
+  }
+
+  shouldShowEmptyState(): boolean {
+    return !this.isLoading && !this.isTransitioning && this.hymns.length === 0;
   }
 
   // ===== MÉTODOS DE CONTROLE DE FONTE =====

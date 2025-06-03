@@ -1,0 +1,133 @@
+/* ===== LOADING STYLES ===== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(var(--ion-color-primary-rgb), 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  --color: var(--ion-color-primary);
+  transform-origin: center;
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ===== HYMN LIST ANIMATIONS ===== */
+.hymn-list-container {
+  ion-list {
+    ion-item {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      animation: slideInFade 0.5s ease-out forwards;
+      
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.1);
+
+        ion-icon {
+          transform: translateX(4px);
+        }
+      }
+
+      ion-icon {
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== HYMN ITEM STYLES ===== */
+// .hymn-item {
+//   --background: var(--ion-color-light);
+//   --padding-start: 16px;
+//   --padding-end: 16px;
+//   --inner-padding-end: 0;
+//   margin-bottom: 8px;
+//   border-radius: 12px;
+//   overflow: hidden;
+//   will-change: transform;
+  
+//   .hymn-title-item {
+//     font-size: var(--dynamic-font-size, 16px);
+//     color: var(--ion-color-dark);
+//     margin: 0;
+    
+//     &::first-letter {
+//       color: var(--ion-color-primary);
+//       font-weight: 600;
+//     }
+//   }
+// }
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 576px) {
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hymn-item {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    margin-bottom: 6px;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .loading-overlay,
+  .loading-spinner,
+  .hymn-list-container ion-list ion-item {
+    animation: none !important;
+    transition: none !important;
+  }
+}
