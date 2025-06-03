@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {  
-  appId: 'com.kounun.mwareiti', // ← ID único do app
-  appName: 'Kounún Mwareiti',        // ← Nome do seu app
+  appId: 'com.konún.mwareiti', // ← ID único do app
+  appName: 'konún Mwareiti',        // ← Nome do seu app
   webDir: 'www',
   plugins: {
     SplashScreen: {
