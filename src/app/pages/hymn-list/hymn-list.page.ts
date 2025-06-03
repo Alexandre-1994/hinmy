@@ -156,7 +156,7 @@ export class HymnListPage implements OnInit, OnDestroy {
     if (this.currentFontSize < this.maxFontSize) {
       this.currentFontSize += this.fontSizeStep;
       this.saveFontSize();
-      this.showFontChangeFeedback(`Fonte: ${this.currentFontSize}px`);
+      this.showFontChangeFeedback(`Font: ${this.currentFontSize}px`);
       this.provideFeedback();
     }
   }
