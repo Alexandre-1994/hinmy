@@ -1,31 +1,42 @@
-// .about-container {
-//   max-width: 800px;
-//   margin: 0 auto;
-//   padding: 20px;
+/* ===== ALTO CONTRASTE PARA PÁGINA ABOUT ===== */
 
-//   h1 {
-//     color: var(--ion-color-primary);
-//     margin-bottom: 20px;
-//     text-align: center;
-//   }
-
-//   h2 {
-//     color: var(--ion-color-secondary);
-//     margin-top: 30px;
-//     margin-bottom: 15px;
-//   }
-
-//   p {
-//     line-height: 1.6;
-//     margin-bottom: 15px;
-//   }
-
-//   ul {
-//     padding-left: 20px;
-    
-//     li {
-//       margin-bottom: 10px;
-//       line-height: 1.4;
+/* ===== HEADER CONSISTENTE ===== */
+// ion-header {
+//     ion-toolbar {
+//       --background: var(--ion-color-primary);
+//       --color: white;
+//       --border-color: transparent;
+      
+//       ion-title {
+//         color: white;
+//         font-weight: 600;
+//         font-size: 1.2rem;
+//         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+//       }
+      
+//       ion-back-button {
+//         --color: white;
+        
+//         &:hover {
+//           --color: var(--ion-color-secondary);
+//           transform: translateX(-5px);
+//         }
+        
+//         &:active {
+//           transform: translateX(-8px) scale(0.95);
+//         }
+//       }
 //     }
 //   }
-// }
+  
+  /* ===== CONTENT COM FUNDO AZUL ===== */
+//   ion-content {
+//     /* Mesmo fundo azul das outras páginas */
+//     --background: linear-gradient(180deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+//     color: white;
+//   }
+  
+  /* ===== CONTAINER PRINCIPAL COM ALTO CONTRASTE ===== */
+  
+  
+  

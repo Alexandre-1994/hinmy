@@ -36,11 +36,14 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
-/* Estilos Globais */
-/* ===== PALETA DE CORES IONIC - APLICATIVO DE HINOS ===== */
+/* === OTIMIZAÇÕES DE PERFORMANCE === */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+/* === PALETA DE CORES === */
 :root {
-  /* === CORES PRIMÁRIAS === */
   --ion-color-primary: #092e87;
   --ion-color-primary-rgb: 9, 46, 135;
   --ion-color-primary-contrast: #ffffff;
@@ -48,13 +51,22 @@
   --ion-color-primary-shade: #082877;
   --ion-color-primary-tint: #234393;
 
-  /* === CORES SECUNDÁRIAS (Saffron Dourado) === */
   --ion-color-secondary: #f4c430;
   --ion-color-secondary-rgb: 244, 196, 48;
   --ion-color-secondary-contrast: #092e87;
   --ion-color-secondary-contrast-rgb: 9, 46, 135;
   --ion-color-secondary-shade: #d7ac2a;
   --ion-color-secondary-tint: #f5ca45;
+
+  --ion-background-color: #ffffff;
+  --ion-background-color-rgb: 255, 255, 255;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+
+  --ion-text-color: #2c3e50;
+  --ion-text-color-rgb: 44, 62, 80;
+  --ion-color-step-600: #7f8c8d;
+  --ion-color-step-400: #95a5a6;
 
   /* === CORES TERCIÁRIAS (Azul Celeste) === */
   --ion-color-tertiary: #1a4db5;
@@ -75,16 +87,12 @@
   /* === CORES DE AVISO === */
   --ion-color-warning: #ffc107;
   --ion-color-warning-rgb: 255, 193, 7;
-  --ion-color-warning-contrast: #092e87;
-  --ion-color-warning-contrast-rgb: 9, 46, 135;
   --ion-color-warning-shade: #e0aa06;
   --ion-color-warning-tint: #ffc720;
 
   /* === CORES DE PERIGO === */
   --ion-color-danger: #dc3545;
   --ion-color-danger-rgb: 220, 53, 69;
-  --ion-color-danger-contrast: #ffffff;
-  --ion-color-danger-contrast-rgb: 255, 255, 255;
   --ion-color-danger-shade: #c22e3c;
   --ion-color-danger-tint: #df4958;
 
@@ -111,33 +119,6 @@
   --ion-color-light-contrast-rgb: 9, 46, 135;
   --ion-color-light-shade: #dadcdd;
   --ion-color-light-tint: #f9fafb;
-
-  /* === BACKGROUNDS === */
-  --ion-background-color: #ffffff;
-  --ion-background-color-rgb: 255, 255, 255;
-  --ion-item-background: #ffffff;
-  --ion-card-background: #ffffff;
-
-  /* === CORES DE TEXTO === */
-  --ion-text-color: #2c3e50;
-  --ion-text-color-rgb: 44, 62, 80;
-  --ion-color-step-600: #7f8c8d;
-  --ion-color-step-400: #95a5a6;
-
-  /* === CORES PERSONALIZADAS === */
-  --ion-color-gold-light: #fef9e7;
-  --ion-color-gold-light-rgb: 254, 249, 231;
-  --ion-color-gold-light-contrast: #092e87;
-  --ion-color-gold-light-contrast-rgb: 9, 46, 135;
-  --ion-color-gold-light-shade: #e0dcc7;
-  --ion-color-gold-light-tint: #fefae9;
-
-  --ion-color-blue-light: #f0f4ff;
-  --ion-color-blue-light-rgb: 240, 244, 255;
-  --ion-color-blue-light-contrast: #092e87;
-  --ion-color-blue-light-contrast-rgb: 9, 46, 135;
-  --ion-color-blue-light-shade: #d3d7e0;
-  --ion-color-blue-light-tint: #f2f5ff;
 
   /* === GRADIENTES === */
   --ion-gradient-primary: linear-gradient(135deg, #092e87 0%, #1a4db5 100%);
@@ -168,13 +149,30 @@
   --ion-segment-color: var(--ion-color-medium);
   --ion-segment-color-checked: var(--ion-color-primary);
   --ion-segment-indicator-color: var(--ion-color-secondary);
+
+  /* === CORES PERSONALIZADAS === */
+  --ion-color-gold-light: #fef9e7;
+  --ion-color-gold-light-rgb: 254, 249, 231;
+  --ion-color-gold-light-contrast: #092e87;
+  --ion-color-gold-light-contrast-rgb: 9, 46, 135;
+  --ion-color-gold-light-shade: #e0dcc7;
+  --ion-color-gold-light-tint: #fefae9;
+
+  --ion-color-blue-light: #f0f4ff;
+  --ion-color-blue-light-rgb: 240, 244, 255;
+  --ion-color-blue-light-contrast: #092e87;
+  --ion-color-blue-light-contrast-rgb: 9, 46, 135;
+  --ion-color-blue-light-shade: #d3d7e0;
+  --ion-color-blue-light-tint: #f2f5ff;
 }
 
 /* ===== ESTILOS GLOBAIS ===== */
 
 ion-content {
   --background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%);
-  animation: fadeIn 0.3s ease-out;
+  contain: content;
+  will-change: scroll-position;
+  // animation: fadeIn 0.3s ease-out;
 }
 
 ion-title {
@@ -192,9 +190,15 @@ ion-button {
 
 ion-back-button {
   --color: white;
+  transition: all 0.3s ease;
   
   &:hover {
     --color: var(--ion-color-secondary);
+    transform: translateX(-5px);
+  }
+  
+  &:active {
+    transform: translateX(-8px) scale(0.95);
   }
 }
 
@@ -207,6 +211,7 @@ ion-header {
     --border-color: transparent;
     --border-width: 0;
     --min-height: 60px;
+    contain: content;
     
     ion-title {
       font-weight: 600;
@@ -218,10 +223,34 @@ ion-header {
     ion-button {
       --border-radius: 50%;
       --box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s ease;
+      contain: content;
+      
+      &:disabled {
+        --color: rgba(255, 255, 255, 0.4);
+        opacity: 0.5;
+      }
+      
+      &:hover:not(:disabled) {
+        --color: var(--ion-color-secondary);
+        --background: rgba(255, 255, 255, 0.1);
+        transform: scale(1.1);
+      }
+      
+      &:active:not(:disabled) {
+        transform: scale(0.95);
+      }
       
       ion-icon {
         filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
       }
+    }
+    
+    h3 {
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 0;
     }
   }
 
@@ -233,17 +262,85 @@ ion-header {
   }
 }
 
+/* ===== CONTROLES DE FONTE ===== */
+
+.font-size-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  min-width: 60px;
+  justify-content: center;
+  
+  ion-icon {
+    font-size: 1rem;
+  }
+  
+  .font-size-text {
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+  }
+}
+
+.reset-font-btn {
+  margin-left: 8px;
+  
+  &:hover:not(:disabled) {
+    --color: var(--ion-color-warning) !important;
+  }
+}
+
+/* ===== FEEDBACK VISUAL ===== */
+
+.font-feedback {
+  position: fixed;
+  // top: 80px;
+  // left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  background: var(--ion-color-secondary);
+  color: var(--ion-color-primary);
+  padding: 12px 20px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(244, 196, 48, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  ion-icon {
+    font-size: 1.1rem;
+    color: var(--ion-color-primary);
+  }
+}
+
 /* ===== SEARCHBAR ===== */
 
 .custom-searchbar {
   --background: rgba(255, 255, 255, 0.95);
-  --color: var(--ion-color-dark);
+  --color: var(--ion-color-primary);
   --placeholder-color: var(--ion-color-medium);
   --icon-color: var(--ion-color-primary);
   --clear-button-color: var(--ion-color-medium);
-  --border-radius: 25px;
-  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --backdrop-filter: blur(10px);
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  contain: content;
+  will-change: transform;
   
   margin: 0;
   padding: 0;
@@ -251,51 +348,124 @@ ion-header {
   .searchbar-input-container {
     border: 2px solid transparent;
     transition: all 0.3s ease;
-    
-    // &:hover {
-    //   border-color: var(--ion-color-secondary);
-    //   transform: translateY(-1px);
-    // }
   }
-
-  // &.searchbar-has-focus {
-  //   .searchbar-input-container {
-  //     border-color: var(--ion-color-secondary);
-  //     box-shadow: 0 6px 20px rgba(244, 196, 48, 0.3);
-  //   }
-  // }
 }
 
-/* ===== LISTA DE HINOS ===== */
+/* ===== CONTROLES DE FONTE (já existentes, mas garantindo cor) ===== */
+.font-size-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  min-width: 55px;
+  justify-content: center;
+  margin: 0 4px;
+  
+  ion-icon {
+    font-size: 0.9rem;
+  }
+  
+  .font-size-text {
+    font-weight: 600;
+    min-width: 18px;
+    text-align: center;
+  }
+}
 
+.button-separator {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 0 8px;
+}
+
+/* ===== FEEDBACK VISUAL ===== */
+.font-feedback {
+  // position: fixed;
+  top: auto; /* Abaixo do header duplo */
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  background: var(--ion-color-secondary);
+  color: var(--ion-color-primary);
+  padding: 10px 18px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 16px rgba(244, 196, 48, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  ion-icon {
+    font-size: 1rem;
+    color: var(--ion-color-primary);
+  }
+}
+
+/* ===== LISTA COM ALTO CONTRASTE ===== */
 .hymn-list-container {
   padding: 16px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 ion-list {
   background: transparent;
   padding: 0;
-  margin-top: 8px;
+  contain: content;
 }
 
-ion-item {
-  --background: white;
+.hymn-item {
+  /* Fundo azul escuro semi-transparente (como nos detalhes) */
+  --background: rgb(9 46 135);
   --border-color: transparent;
   --inner-border-width: 0;
   --padding-start: 20px;
   --padding-end: 16px;
-  --min-height: 75px;
+  --min-height: 70px;
   
   margin-bottom: 12px;
-  border-radius: var(--ion-border-radius);
-  box-shadow: var(--ion-shadow-soft);
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  border-left: 4px solid var(--ion-color-secondary);
+  contain: content;
+  will-change: transform;
+  transform: translateZ(0);
   
-  /* Efeito de destaque sutil */
+  /* Efeito hover melhorado */
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    
+    .nav-arrow {
+      color: var(--ion-color-secondary) !important;
+      transform: translateX(4px);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  /* Efeito de brilho dourado na lateral */
   &::before {
     content: '';
     position: absolute;
@@ -304,59 +474,25 @@ ion-item {
     width: 4px;
     height: 100%;
     background: var(--ion-color-secondary);
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-  }
-
-  &:hover, &:active {
-    transform: translateY(-2px);
-    box-shadow: var(--ion-shadow-primary);
-    
-    &::before {
-      transform: scaleY(1);
-    }
-    
-    ion-icon {
-      color: var(--ion-color-secondary) !important;
-      transform: translateX(4px);
-    }
-  }
-
-  /* Efeito ripple personalizado */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(244, 196, 48, 0.1);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease;
-  }
-
-  &:active::after {
-    width: 300px;
-    height: 300px;
+    opacity: 1;
   }
 }
 
-/* ===== LABELS DOS HINOS ===== */
-
+/* ===== CONTEÚDO DOS ITENS COM TEXTO BRANCO ===== */
 ion-label {
   margin: 8px 0;
   
-  h2 {
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--ion-color-dark);
-    line-height: 1.4;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
+  .hymn-title-item {
+    font-size: var(--dynamic-font-size);
+    // font-weight: 600;
+    color: white; /* TEXTO BRANCO */
+    line-height: var(--base-line-height);
+    margin: 0;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    contain: content;
     
-    /* Número do hino com destaque dourado */
+    /* Número do hino em dourado */
     &::first-letter {
       color: var(--ion-color-secondary);
       font-weight: 700;
@@ -364,319 +500,492 @@ ion-label {
   }
   
   .hymn-subtitle {
-    color: var(--ion-color-medium);
-    font-size: 0.9rem;
+    font-size: calc(var(--dynamic-font-size) * 0.85);
+    color: rgba(255, 255, 255, 0.7); /* Branco transparente */
     font-style: italic;
-    margin: 0;
-    display: flex;
-    align-items: center;
+    margin: 4px 0 0 0;
+    transition: font-size 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
 }
 
 /* ===== ÍCONE DE NAVEGAÇÃO ===== */
-
-ion-item ion-icon[slot="end"] {
-  color: var(--ion-color-medium);
-  font-size: 1.2rem;
+.nav-arrow {
+  color: rgba(255, 255, 255, 0.7); /* Branco transparente */
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   margin-left: 12px;
 }
 
-/* ===== ESTADO VAZIO ===== */
-
+/* ===== ESTADO VAZIO COM ALTO CONTRASTE ===== */
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
-  text-align: center;
+  padding: 32px;
+  contain: content;
   
   ion-icon {
-    font-size: 4rem;
-    color: var(--ion-color-medium);
+    font-size: 48px;
     margin-bottom: 16px;
-    opacity: 0.6;
-  }
-  
-  p {
-    color: var(--ion-color-medium);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin: 0;
   }
 }
 
-/* ===== PÁGINA DE DETALHES DO HINO ===== */
+/* ===== TÍTULO NO HEADER ===== */
+.title-text {
+  color: white !important;
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 480px) {
+  .font-size-indicator {
+    font-size: 0.75rem;
+    padding: 0 8px;
+    min-width: 50px;
+    margin: 0 2px;
+    
+    .font-size-text {
+      min-width: 16px;
+    }
+  }
+  
+  ion-buttons ion-button {
+    --padding-start: 6px;
+    --padding-end: 6px;
+  }
+  
+  .button-separator {
+    margin: 0 4px;
+  }
+  
+  .font-feedback {
+    left: 16px;
+    right: 16px;
+    transform: translateY(-30px);
+    font-size: 0.8rem;
+    
+    &.show {
+      transform: translateY(0);
+    }
+  }
+  
+  .hymn-list-container {
+    padding: 12px;
+  }
+  
+  .hymn-item {
+    --padding-start: 16px;
+    --padding-end: 12px;
+    --min-height: 60px;
+  }
+  
+  .title-text {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hymn-list-container {
+    padding: 24px;
+    max-width: 900px;
+  }
+  
+  .hymn-item {
+    --min-height: 80px;
+    --padding-start: 24px;
+    --padding-end: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .font-feedback {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
+  
+  .title-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hymn-list-container {
+    padding: 32px;
+  }
+  
+  ion-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 16px;
+  }
+  
+  .hymn-item {
+    margin-bottom: 0;
+  }
+}
+
+/* ===== ACESSIBILIDADE E ALTO CONTRASTE ===== */
+
+@media (prefers-contrast: high) {
+  .hymn-item {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border: 2px solid var(--ion-color-secondary);
+    
+    .hymn-title-item {
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+    
+    .hymn-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+  }
+  
+  .nav-arrow {
+    color: #ffffff !important;
+  }
+  
+  .empty-message {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+  
+  .font-feedback {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid var(--ion-color-secondary);
+  }
+  
+  .font-size-indicator {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hymn-title-item,
+  .hymn-subtitle,
+  .empty-message,
+  .font-feedback,
+  .hymn-item,
+  .nav-arrow,
+  ion-buttons ion-button {
+    transition: none;
+  }
+}
+
+/* ===== ANIMAÇÕES SUAVES ===== */
+
+@keyframes listItemGlow {
+  0%, 100% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(244, 196, 48, 0.2);
+  }
+}
+
+// .hymn-item:nth-child(odd) {
+//   animation: listItemGlow 4s ease-in-out infinite;
+//   animation-delay: 2s;
+// }
+
+/* ===== ESTADOS DE FONTE DIFERENTES ===== */
+
+.hymn-list-content[style*="12px"],
+.hymn-list-content[style*="14px"] {
+  .hymn-item {
+    --min-height: 55px;
+    --padding-start: 16px;
+    margin-bottom: 8px;
+  }
+}
+
+.hymn-list-content[style*="22px"],
+.hymn-list-content[style*="24px"] {
+  .hymn-item {
+    --min-height: 85px;
+    --padding-start: 24px;
+    margin-bottom: 16px;
+  }
+  
+  ion-label {
+    margin: 12px 0;
+    
+    .hymn-subtitle {
+      margin-top: 6px;
+    }
+  }
+}
+
+/* ===== PÁGINA DE DETALHES COM ALTO CONTRASTE ===== */
+
+.hymn-content {
+  --dynamic-font-size: 16px;
+  --base-line-height: 1.6;
+  // --background: linear-gradient(180deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+}
 
 .hymn-detail {
   padding: 16px;
   max-width: 700px;
   margin: 0 auto;
 
-  h1 {
+  /* Título principal - BRANCO */
+  .hymn-title {
     color: var(--ion-color-primary);
-    font-size: 1.8rem;
+    font-size: calc(var(--dynamic-font-size) * 1.6);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    line-height: 1.3;
+    transition: font-size 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    // animation: textGlow 4s ease-in-out infinite;
   }
 
   .content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 
-    .verse, .chorus {
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    /* Seções de versos e refrões com fundo azul escuro */
+    .verse, .chorus, .hymn-section {
+      background:var(--ion-color-primary);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border-left: 4px solid var(--ion-color-secondary);
+      // animation: contentFadeIn 0.5s ease-out backwards;
       
-      h3 {
-        font-size: 1rem;
+      // &:hover {
+      //   transform: translateY(-2px);
+      //   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      //   background: rgba(0, 0, 0, 0.3);
+      // }
+      
+      /* Títulos das seções - DOURADO */
+      .section-title, h3 {
+        color: var(--ion-color-secondary);
+        font-size: calc(var(--dynamic-font-size) * 1.1);
         font-weight: 600;
-        margin: 0 0 12px 0;
+        margin: 0 0 16px 0;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        transition: font-size 0.3s ease;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
       }
       
-      p {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: var(--ion-color-dark);
-        margin: 0 0 8px 0;
+      /* Linhas do texto - BRANCO */
+      .hymn-line, p {
+        color: white;
+        font-size: var(--dynamic-font-size);
+        line-height: var(--base-line-height);
+        margin: 0 0 12px 0;
+        transition: all 0.3s ease;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
         
         &:last-child {
           margin-bottom: 0;
         }
+        
+        &:hover {
+          color: var(--ion-color-secondary);
+          padding-left: 8px;
+        }
       }
     }
 
-    .verse {
-      border-left: 4px solid var(--ion-color-primary);
-      
-      h3 {
-        color: var(--ion-color-primary);
-      }
-    }
-
+    /* Refrões com fundo ligeiramente diferente */
     .chorus {
-      border-left: 4px solid var(--ion-color-secondary);
-      background: var(--ion-color-gold-light);
+      background: #092e87;
       
-      h3 {
-        color: var(--ion-color-secondary);
+      .hymn-line, p {
+        font-weight: 500;
+        font-style: italic;
       }
     }
   }
 }
-
-/* ===== PÁGINA ABOUT ===== */
 
 .about-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-  h1 {
-    color: var(--ion-color-primary);
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  h2 {
-    color: var(--ion-color-secondary);
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 32px;
-    margin-bottom: 16px;
-  }
-
-  p {
-    color: var(--ion-color-dark);
-    line-height: 1.6;
-    margin-bottom: 16px;
-    font-size: 16px;
-  }
-
-  ul {
-    padding-left: 24px;
-    
-    li {
-      color: var(--ion-color-dark);
-      margin-bottom: 12px;
-      line-height: 1.5;
-      font-size: 16px;
-    }
-  }
-}
-
-/* ===== ANIMAÇÕES ===== */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-ion-item {
-  animation: fadeInUp 0.5s ease forwards;
-  
-  @for $i from 1 through 20 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.1}s;
-      opacity: 0;
-    }
-  }
-}
-
-/* ===== RESPONSIVIDADE ===== */
-
-@media (min-width: 768px) {
-  .hymn-list-container {
-    padding: 24px;
-  }
-  
-  ion-item {
-    --min-height: 85px;
-    --padding-start: 24px;
-    --padding-end: 20px;
-    
-    ion-label h2 {
-      font-size: 1.2rem;
-    }
-  }
-
-  .hymn-detail {
-    h1 {
-      font-size: 2.2rem;
-    }
-    
-    .content .verse, .content .chorus {
-      padding: 24px;
-      
-      h3 {
-        font-size: 1.1rem;
-      }
-      
-      p {
-        font-size: 1.1rem;
-        line-height: 1.7;
-      }
-    }
-  }
-
-  .about-container {
-    padding: 16px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hymn-list-container {
     max-width: 800px;
-    padding: 32px;
-  }
-  
-  ion-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 16px;
-  }
-  
-  ion-item {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  .about-container {
-    padding: 16px;
-  }
-
-  .hymn-detail {
-    padding: 12px;
-  }
-}
-
-/* ===== TEMA ESCURO ===== */
-
-@media (prefers-color-scheme: dark) {
-  ion-content {
-    --background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%);
-  }
-  
-  ion-item {
-    --background: #2d2d2d;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .custom-searchbar {
-    --background: rgba(45, 45, 45, 0.95);
-    --color: white;
-  }
-
-  .hymn-detail {
-    h1 {
-      color: var(--ion-color-primary-tint);
-    }
+    margin: 0 auto;
+    padding: 24px;
     
-    .content .verse, .content .chorus {
-      background: #2d2d2d;
+    /* Fundo azul escuro semi-transparente (como outras páginas) */
+    background: rgb(15 56 149);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Título principal - BRANCO */
+    h1 {
       color: white;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      position: relative;
       
-      p {
-        color: #ffffff;
+      /* Linha decorativa dourada */
+      &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: var(--ion-color-secondary);
+        margin: 16px auto 0;
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(244, 196, 48, 0.4);
+      }
+    }
+  
+    /* Subtítulos - DOURADO */
+    h2 {
+      color: var(--ion-color-secondary);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+      position: relative;
+      padding-left: 20px;
+      
+      /* Ícone decorativo */
+      &::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--ion-color-secondary);
+        font-size: 1.2rem;
+      }
+    }
+  
+    /* Parágrafos - BRANCO */
+    p {
+      color: white;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      text-align: justify;
+      
+      /* Primeira linha de cada parágrafo com destaque sutil */
+      &::first-line {
+        font-weight: 500;
+      }
+    }
+  
+    /* Listas - BRANCO */
+    ul {
+      padding-left: 24px;
+      margin-bottom: 20px;
+      
+      li {
+        color: white;
+        margin-bottom: 12px;
+        line-height: 1.6;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        position: relative;
+        
+        /* Bullet personalizado dourado */
+        &::marker {
+          color: var(--ion-color-secondary);
+          font-weight: bold;
+        }
+        
+        /* Hover effect nos itens da lista */
+        &:hover {
+          color: var(--ion-color-secondary);
+          padding-left: 8px;
+          transition: all 0.3s ease;
+        }
       }
     }
     
-    .content .chorus {
-      background: rgba(244, 196, 48, 0.1);
+    /* Efeito hover no container */
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
     }
   }
-}
-
-/* ===== CLASSES UTILITÁRIAS ===== */
-
-.hymn-number-highlight {
-  color: var(--ion-color-secondary);
-  font-weight: 700;
-  margin-right: 8px;
-}
-
-.featured-hymn {
-  &::before {
-    background: linear-gradient(45deg, var(--ion-color-secondary), var(--ion-color-warning));
-    width: 6px;
+  
+  /* ===== SEÇÕES ESPECÍFICAS ===== */
+  
+  /* Seção da missão com destaque especial */
+  .about-container h2:first-of-type + p {
+    background: rgba(244, 196, 48, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--ion-color-secondary);
+    font-weight: 500;
+    font-style: italic;
+    box-shadow: 0 4px 16px rgba(244, 196, 48, 0.2);
   }
   
-  ion-label h2 {
-    color: var(--ion-color-primary);
+  /* Seção de contato com estilo especial */
+  .about-container h2:nth-of-type(2) {
+    &::before {
+      content: '';
+    }
   }
-}
+  
+  /* Seção de versão */
+  .about-container h2:last-of-type {
+    &::before {
+      content: '';
+    }
+    
+    + p {
+      font-family: 'Courier New', monospace;
+      font-weight: 600;
+      color: var(--ion-color-secondary);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      border: 1px solid rgba(244, 196, 48, 0.3);
+    }
+  }
+  
+  /* ===== ELEMENTOS DECORATIVOS ===== */
+  
+  .about-container {
+    position: relative;
+    overflow: hidden;
+    
+    /* Efeito de brilho sutil no fundo */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(244, 196, 48, 0.05) 0%, transparent 70%);
+      // animation: gentleGlow 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
 
-/* ===== SPLASH SCREEN COM IMAGEM ORIGINAL ===== */
+/* ===== SPLASH SCREEN ===== */
 
 ion-content.splash-content {
   --background: #1e3a8a;
@@ -700,7 +1009,6 @@ ion-content.splash-content {
   animation: fadeIn 1s ease-out;
 }
 
-/* ===== LOGO SVG PRINCIPAL ===== */
 .logo-svg {
   width: 280px;
   height: 280px;
@@ -709,50 +1017,45 @@ ion-content.splash-content {
   animation: logoEntrance 1.5s ease-out;
   position: relative;
   
-  /* Animações para elementos dentro do SVG */
   &:hover {
     animation: logoHover 0.5s ease-in-out;
   }
 }
 
-/* Container para efeitos adicionais na logo */
 .logo-container {
   position: relative;
   display: inline-block;
   margin-bottom: 40px;
   
-  /* Efeito de brilho ao redor da logo */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle, rgba(244, 196, 48, 0.3) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: logoGlow 3s ease-in-out infinite;
-    z-index: -1;
-  }
+  // &::before {
+  //   content: '';
+  //   position: absolute;
+  //   top: -10px;
+  //   left: -10px;
+  //   right: -10px;
+  //   bottom: -10px;
+  //   background: radial-gradient(circle, rgba(244, 196, 48, 0.3) 0%, transparent 70%);
+  //   border-radius: 50%;
+  //   animation: logoGlow 3s ease-in-out infinite;
+  //   z-index: -1;
+  // }
   
-  /* Efeito de pulse dourado */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    border: 2px solid var(--ion-color-secondary);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    animation: pulseBorder 4s ease-in-out infinite;
-    z-index: -1;
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   width: 300px;
+  //   height: 300px;
+  //   border: 2px solid var(--ion-color-secondary);
+  //   border-radius: 50%;
+  //   transform: translate(-50%, -50%) scale(0);
+  //   opacity: 0;
+  //   animation: pulseBorder 4s ease-in-out infinite;
+  //   z-index: -1;
+  // }
 }
 
-/* ===== SPINNER ELEGANTE ===== */
 .splash-spinner {
   --color: var(--ion-color-secondary);
   transform: scale(1.8);
@@ -761,7 +1064,6 @@ ion-content.splash-content {
   animation: spinnerPulse 2s ease-in-out infinite;
 }
 
-/* ===== TEXTO DE LOADING ===== */
 .loading-text {
   font-size: 1.1rem;
   color: white;
@@ -772,84 +1074,6 @@ ion-content.splash-content {
   margin-top: 20px;
 }
 
-/* ===== ELEMENTOS DECORATIVOS ===== */
-.decorative-elements {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* Partículas flutuantes */
-.particle {
-  position: absolute;
-  color: var(--ion-color-secondary);
-  opacity: 0;
-  animation: floatParticle 4s ease-in-out infinite;
-  font-size: 20px;
-}
-
-.particle:nth-child(1) {
-  left: 10%;
-  top: 20%;
-  animation-delay: 0s;
-}
-
-.particle:nth-child(2) {
-  right: 15%;
-  top: 30%;
-  animation-delay: 1s;
-  font-size: 16px;
-}
-
-.particle:nth-child(3) {
-  left: 20%;
-  bottom: 25%;
-  animation-delay: 2s;
-  font-size: 24px;
-}
-
-.particle:nth-child(4) {
-  right: 25%;
-  bottom: 35%;
-  animation-delay: 3s;
-  font-size: 18px;
-}
-
-/* Círculos de fundo */
-.background-circle {
-  position: absolute;
-  border: 2px solid rgba(244, 196, 48, 0.1);
-  border-radius: 50%;
-  animation: expandCircle 4s ease-in-out infinite;
-}
-
-.circle-1 {
-  width: 200px;
-  height: 200px;
-  top: 10%;
-  left: -10%;
-  animation-delay: 0s;
-}
-
-.circle-2 {
-  width: 150px;
-  height: 150px;
-  bottom: 15%;
-  right: -5%;
-  animation-delay: 2s;
-}
-
-.circle-3 {
-  width: 100px;
-  height: 100px;
-  top: 60%;
-  left: 5%;
-  animation-delay: 1s;
-}
-
-/* ===== INDICADOR DE PROGRESSO ===== */
 .progress-indicator {
   position: absolute;
   bottom: 80px;
@@ -883,28 +1107,15 @@ ion-content.splash-content {
   animation: progressTextChange 30s linear forwards;
 }
 
-@keyframes progressTextChange {
-  0% { 
-    opacity: 0.7;
-  }
-  16.66% { 
-    opacity: 1;
-  }
-  33.33% { 
-    opacity: 0.7;
-  }
-  50% { 
-    opacity: 1;
-  }
-  66.66% { 
-    opacity: 0.7;
-  }
-  83.33% { 
-    opacity: 1;
-  }
-  100% { 
-    opacity: 0.7;
-  }
+.skip-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: white;
+  opacity: 0.5;
+  animation: fadeInOut 2s ease-in-out infinite;
 }
 
 /* ===== ANIMAÇÕES ===== */
@@ -912,27 +1123,24 @@ ion-content.splash-content {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes logoEntrance {
-  0% {
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: scale(0.3) rotate(-5deg);
+    transform: translateY(20px);
   }
-  50% {
-    transform: scale(1.05) rotate(2deg);
-  }
-  100% {
+  to {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: translateY(0);
   }
 }
-
-/* ===== ANIMAÇÕES PARA LOGO SVG ===== */
 
 @keyframes logoEntrance {
   0% {
@@ -985,30 +1193,37 @@ ion-content.splash-content {
   }
 }
 
-/* Animação de rotação suave para elementos circulares no SVG */
-@keyframes gentleRotate {
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 2px 8px rgba(244, 196, 48, 0.4);
+  }
+}
+
+@keyframes contentFadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Para animar partes específicas do SVG via CSS */
-.logo-svg svg .stars-circle {
-  animation: gentleRotate 20s linear infinite;
-  transform-origin: center;
-}
-
-.logo-svg svg .chalice {
-  animation: pulse 2s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.logo-svg svg .palm-tree {
-  animation: sway 3s ease-in-out infinite;
-  transform-origin: bottom center;
+@keyframes rippleEffect {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
 }
 
 @keyframes spinnerPulse {
@@ -1052,36 +1267,6 @@ ion-content.splash-content {
   }
 }
 
-@keyframes floatParticle {
-  0% {
-    opacity: 0;
-    transform: translateY(0) rotate(0deg) scale(0.5);
-  }
-  25% {
-    opacity: 0.8;
-    transform: translateY(-20px) rotate(90deg) scale(1);
-  }
-  75% {
-    opacity: 0.6;
-    transform: translateY(-40px) rotate(180deg) scale(0.8);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-60px) rotate(270deg) scale(0.3);
-  }
-}
-
-@keyframes expandCircle {
-  0%, 100% {
-    transform: scale(0.8);
-    opacity: 0.1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.3;
-  }
-}
-
 @keyframes progressLoad {
   0% {
     width: 0%;
@@ -1091,16 +1276,28 @@ ion-content.splash-content {
   }
 }
 
-/* ===== DICA DE TAP PARA PULAR ===== */
-.skip-hint {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  color: white;
-  opacity: 0.5;
-  animation: fadeInOut 2s ease-in-out infinite;
+@keyframes progressTextChange {
+  0% { 
+    opacity: 0.7;
+  }
+  16.66% { 
+    opacity: 1;
+  }
+  33.33% { 
+    opacity: 0.7;
+  }
+  50% { 
+    opacity: 1;
+  }
+  66.66% { 
+    opacity: 0.7;
+  }
+  83.33% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0.7;
+  }
 }
 
 @keyframes fadeInOut {
@@ -1112,16 +1309,56 @@ ion-content.splash-content {
   }
 }
 
-/* ===== RESPONSIVIDADE PARA SVG ===== */
+/* ===== RESPONSIVIDADE ===== */
 
 @media (max-width: 480px) {
+  .font-size-indicator {
+    font-size: 0.8rem;
+    padding: 0 8px;
+    min-width: 50px;
+    
+    .font-size-text {
+      min-width: 16px;
+    }
+  }
+  
+  ion-buttons ion-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+  }
+  
+  .font-feedback {
+    left: 16px;
+    right: 16px;
+    transform: translateY(-30px);
+    font-size: 0.85rem;
+    
+    &.show {
+      transform: translateY(0);
+    }
+  }
+  
+  .hymn-detail {
+    padding: 12px;
+    
+    .hymn-title {
+      font-size: calc(var(--dynamic-font-size) * 1.4);
+      margin-bottom: 24px;
+    }
+    
+    .content .verse, .content .chorus, .content .hymn-section {
+      padding: 16px;
+      
+      .section-title, h3 {
+        font-size: calc(var(--dynamic-font-size) * 1.05);
+        margin-bottom: 12px;
+      }
+    }
+  }
+  
   .logo-svg {
     width: 220px;
     height: 220px;
-  }
-  
-  .logo-container {
-    margin-bottom: 30px;
   }
   
   .splash-spinner {
@@ -1129,37 +1366,60 @@ ion-content.splash-content {
     margin: 20px 0 15px 0;
   }
   
-  .loading-text {
-    font-size: 1rem;
-  }
-  
   .progress-indicator {
     bottom: 60px;
     width: 180px;
   }
-  
-  .particle {
-    font-size: 16px;
-  }
 }
 
 @media (min-width: 768px) {
+  .hymn-list-container {
+    padding: 24px;
+  }
+  
+  ion-item {
+    --min-height: 85px;
+    --padding-start: 24px;
+    --padding-end: 20px;
+    
+    ion-label h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .hymn-detail {
+    .hymn-title {
+      font-size: calc(var(--dynamic-font-size) * 1.8);
+      margin-bottom: 40px;
+    }
+    
+    .content .verse, .content .chorus, .content .hymn-section {
+      padding: 32px;
+      
+      .section-title, h3 {
+        font-size: calc(var(--dynamic-font-size) * 1.2);
+        margin-bottom: 20px;
+      }
+      
+      .hymn-line, p {
+        font-size: calc(var(--dynamic-font-size) * 1.05);
+        line-height: 1.7;
+      }
+    }
+  }
+  
+  .content {
+    gap: 28px;
+  }
+  
   .logo-svg {
     width: 320px;
     height: 320px;
   }
   
-  .logo-container {
-    margin-bottom: 50px;
-  }
-  
   .splash-spinner {
     transform: scale(2);
     margin: 40px 0 25px 0;
-  }
-  
-  .loading-text {
-    font-size: 1.2rem;
   }
   
   .progress-indicator {
@@ -1169,330 +1429,139 @@ ion-content.splash-content {
 }
 
 @media (min-width: 1024px) {
+  .hymn-list-container {
+    max-width: 800px;
+    padding: 32px;
+  }
+  
+  ion-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 16px;
+  }
+  
+  ion-item {
+    margin-bottom: 0;
+  }
+  
   .logo-svg {
     width: 360px;
     height: 360px;
   }
 }
 
-/* ===== ANIMAÇÕES DE TRANSIÇÃO ENTRE PÁGINAS ===== */
+/* ===== ACESSIBILIDADE ===== */
 
-/* ===== OPÇÃO 1: SLIDE ELEGANTE (RECOMENDADA) ===== */
-
-/* Entrada da página de detalhes */
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Saída da página de lista */
-@keyframes slideOutToLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(-30%);
-    opacity: 0.7;
-  }
-}
-
-/* Entrada da página de lista (volta) */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Saída da página de detalhes (volta) */
-@keyframes slideOutToRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-/* ===== APLICAR ANIMAÇÕES ===== */
-
-/* Página de hinos (lista) */
-ion-page.hymn-list {
-  &.ion-page-entering {
-    animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  &.ion-page-leaving {
-    animation: slideOutToLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-}
-
-/* Página de detalhes do hino */
-ion-page.hymn-detail {
-  &.ion-page-entering {
-    animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  
-  &.ion-page-leaving {
-    animation: slideOutToRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-}
-
-/* ===== OPÇÃO 2: FADE + SCALE (ELEGANTE) ===== */
-
-@keyframes fadeScaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-@keyframes fadeScaleOut {
-  from {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.05) translateY(-20px);
-  }
-}
-
-/* Para usar esta opção, substitua as classes acima por: */
-/*
-ion-page.hymn-detail {
-  &.ion-page-entering {
-    animation: fadeScaleIn 0.3s ease-out;
-  }
-  
-  &.ion-page-leaving {
-    animation: fadeScaleOut 0.3s ease-in;
-  }
-}
-*/
-
-/* ===== OPÇÃO 3: FLIP CARD (CRIATIVA) ===== */
-
-@keyframes flipIn {
-  from {
-    transform: perspective(1000px) rotateY(-90deg);
-    opacity: 0;
-  }
-  to {
-    transform: perspective(1000px) rotateY(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes flipOut {
-  from {
-    transform: perspective(1000px) rotateY(0deg);
-    opacity: 1;
-  }
-  to {
-    transform: perspective(1000px) rotateY(90deg);
-    opacity: 0;
-  }
-}
-
-/* ===== OPÇÃO 4: MATERIAL DESIGN TRANSITION ===== */
-
-@keyframes materialSlideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  }
-}
-
-@keyframes materialSlideOut {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  }
-  to {
-    transform: translateX(-30%);
-    opacity: 0.8;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* ===== ANIMAÇÕES PARA ELEMENTOS INTERNOS ===== */
-
-/* Título da página de detalhes */
-.hymn-detail h1 {
-  animation: titleSlideIn 0.6s ease-out 0.2s backwards;
-}
-
-@keyframes titleSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Conteúdo dos versos */
-.hymn-detail .verse, 
-.hymn-detail .chorus {
-  animation: contentFadeIn 0.5s ease-out backwards;
-}
-
-.hymn-detail .verse:nth-child(1) { animation-delay: 0.3s; }
-.hymn-detail .verse:nth-child(2) { animation-delay: 0.4s; }
-.hymn-detail .verse:nth-child(3) { animation-delay: 0.5s; }
-.hymn-detail .verse:nth-child(4) { animation-delay: 0.6s; }
-.hymn-detail .chorus:nth-child(2) { animation-delay: 0.35s; }
-.hymn-detail .chorus:nth-child(4) { animation-delay: 0.55s; }
-
-@keyframes contentFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== BOTÃO DE VOLTAR ANIMADO ===== */
-
-ion-back-button {
-  transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateX(-5px);
-    color: var(--ion-color-secondary) !important;
-  }
-  
-  &:active {
-    transform: translateX(-8px) scale(0.95);
-  }
-}
-
-/* ===== ANIMAÇÃO NO CLIQUE DO ITEM DA LISTA ===== */
-
-ion-item {
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  
-  &:active {
-    transform: scale(0.98);
-    background: var(--ion-color-light) !important;
-    
-    /* Efeito ripple melhorado */
-    &::after {
-      animation: rippleEffect 0.6s ease-out;
-    }
-  }
-}
-
-@keyframes rippleEffect {
-  0% {
-    width: 0;
-    height: 0;
-    opacity: 1;
-  }
-  100% {
-    width: 300px;
-    height: 300px;
-    opacity: 0;
-  }
-}
-
-/* ===== HEADER ANIMADO ===== */
-
-ion-header ion-toolbar {
-  transition: all 0.3s ease;
-}
-
-ion-header ion-title {
-  animation: headerSlideIn 0.4s ease-out 0.1s backwards;
-}
-
-@keyframes headerSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== TRANSIÇÕES PARA DISPOSITIVOS MÓVEIS ===== */
-
-@media (max-width: 768px) {
-  /* Animações mais rápidas em mobile */
-  ion-page.hymn-detail {
-    &.ion-page-entering {
-      animation-duration: 0.3s;
+@media (prefers-contrast: high) {
+  .hymn-detail {
+    .hymn-title {
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
     
-    &.ion-page-leaving {
-      animation-duration: 0.3s;
-    }
-  }
-  
-  /* Reduzir motion para performance */
-  @media (prefers-reduced-motion: reduce) {
-    ion-page.hymn-detail,
-    ion-page.hymn-list {
-      &.ion-page-entering,
-      &.ion-page-leaving {
-        animation: none;
-        transition: opacity 0.2s ease;
+    .content .verse, .content .chorus, .content .hymn-section {
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid var(--ion-color-secondary);
+      
+      .hymn-line, p {
+        color: #ffffff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      }
+      
+      .section-title, h3 {
+        color: var(--ion-color-secondary);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
       }
     }
-    
-    .hymn-detail h1,
-    .hymn-detail .verse,
-    .hymn-detail .chorus {
-      animation: none;
-    }
+  }
+  
+  .font-feedback {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid var(--ion-color-secondary);
+  }
+  
+  .font-size-indicator {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 }
 
-/* ===== CONFIGURAÇÃO GLOBAL DE PERFORMANCE ===== */
-
-ion-page {
-  /* Hardware acceleration para animações suaves */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  
-  /* Smooth scrolling */
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: reduce) {
+  .hymn-title,
+  .hymn-line,
+  .section-title,
+  .font-feedback,
+  .verse,
+  .chorus,
+  .hymn-section,
+  ion-buttons ion-button,
+  ion-item {
+    transition: none;
+    animation: none;
+  }
 }
 
-/* ===== LOADING STATES E SKELETON ===== */
+/* ===== TEMA ESCURO ===== */
+
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 50%);
+  }
+  
+  ion-item {
+    --background: #2d2d2d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .custom-searchbar {
+    --background: rgba(45, 45, 45, 0.95);
+    --color: white;
+  }
+}
+
+/* ===== CLASSES UTILITÁRIAS ===== */
+
+.hymn-number-highlight {
+  color: var(--ion-color-secondary);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.featured-hymn {
+  &::before {
+    background: linear-gradient(45deg, var(--ion-color-secondary), var(--ion-color-warning));
+    width: 6px;
+  }
+  
+  ion-label h2 {
+    color: var(--ion-color-primary);
+  }
+}
+
+/* ===== ESTADOS DE FONTE DIFERENTES ===== */
+
+.hymn-content[style*="12px"] {
+  .content .verse, .content .chorus, .content .hymn-section {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.hymn-content[style*="26px"], 
+.hymn-content[style*="28px"] {
+  .content .verse, .content .chorus, .content .hymn-section {
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  
+  .content {
+    gap: 32px;
+  }
+}
+
+/* ===== LOADING STATES ===== */
 
 .loading-container {
   padding: 20px;
@@ -1500,6 +1569,8 @@ ion-page {
 }
 
 .loading-skeleton {
+  contain: content;
+  
   .skeleton-title {
     height: 32px;
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -1559,7 +1630,6 @@ ion-page {
   }
 }
 
-/* Loading indicator no item */
 .item-loading-indicator {
   position: absolute;
   right: 20px;
@@ -1582,5 +1652,191 @@ ion-item.item-loading {
   
   ion-icon[slot="end"] {
     opacity: 0;
+  }
+}
+
+/* ===== ANIMAÇÕES DE TRANSIÇÃO ENTRE PÁGINAS ===== */
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-30%);
+    opacity: 0.7;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+ion-page.hymn-list {
+  &.ion-page-entering {
+    animation: slideInFromLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  &.ion-page-leaving {
+    animation: slideOutToLeft 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+ion-page.hymn-detail {
+  &.ion-page-entering {
+    animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  &.ion-page-leaving {
+    animation: slideOutToRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+/* ===== CONFIGURAÇÃO GLOBAL DE PERFORMANCE ===== */
+
+ion-page {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  scroll-behavior: smooth;
+}
+
+/* ===== LOADING STYLES ===== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(var(--ion-color-primary-rgb), 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  --color: var(--ion-color-primary);
+  transform-origin: center;
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* ===== HYMN LIST ANIMATIONS ===== */
+.hymn-list-container {
+  ion-list {
+    ion-item {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      animation: slideInFade 0.5s ease-out forwards;
+      
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-2px) scale(1.02);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(var(--ion-color-primary-rgb), 0.1);
+
+        ion-icon {
+          transform: translateX(4px);
+        }
+      }
+
+      ion-icon {
+        transition: transform 0.3s ease;
+      }
+    }
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 576px) {
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .hymn-item {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    margin-bottom: 6px;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .loading-overlay,
+  .loading-spinner,
+  .hymn-list-container ion-list ion-item {
+    animation: none !important;
+    transition: none !important;
   }
 }

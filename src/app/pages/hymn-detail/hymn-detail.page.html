@@ -1,21 +1,117 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar style="padding-top: 30px;">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/hymn-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>Hinmy {{hymn?.number}}</ion-title>
+    <h3>Himny {{hymn?.number}}</h3>
+    
+    <!-- Controles de Tamanho de Fonte -->
+    <ion-buttons slot="end">
+      <!-- Botão de diminuir fonte -->
+      <ion-button 
+        (click)="decreaseFontSize()" 
+        [disabled]="currentFontSize <= minFontSize"
+        fill="clear"
+        title="Diminuir fonte">
+        <ion-icon name="remove-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      
+      <!-- Indicador do tamanho atual -->
+      <!-- <span class="font-size-indicator">
+        <ion-icon name="text-outline"></ion-icon>
+        <span class="font-size-text">{{currentFontSize}}</span>
+      </span> -->
+      
+      <!-- Botão de aumentar fonte -->
+      <ion-button 
+        (click)="increaseFontSize()" 
+        [disabled]="currentFontSize >= maxFontSize"
+        fill="clear"
+        title="Aumentar fonte">
+        <ion-icon name="add-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+      
+      <!-- Botão de reset -->
+      <ion-button 
+        (click)="resetFontSize()" 
+        fill="clear"
+        title="Resetar fonte"
+        class="reset-font-btn">
+        <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding" *ngIf="hymn">
-  <div class="hymn-detail">
-    <h1>{{hymn.title}}</h1>
-    
-    <div class="content">
-      <div [ngClass]="item.type" *ngFor="let item of hymn.content">
-        <h3>{{ item.type === 'verse' ? 'Verse' : 'Chorus' }}</h3>
-        <p *ngFor="let line of item.lines">{{line}}</p>
+<ion-content 
+  [fullscreen]="true" 
+  class="ion-padding hymn-content" 
+  [style.--dynamic-font-size]="currentFontSize + 'px'"
+  style="background-color: aliceblue !important;">
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading">
+    <ion-skeleton-text [animated]="true" style="width: 60%; height: 32px; margin: 16px auto;"></ion-skeleton-text>
+    <div class="skeleton-content">
+      <div class="skeleton-section" *ngFor="let i of [1,2,3]">
+        <ion-skeleton-text [animated]="true" style="width: 30%; height: 24px; margin: 8px 0;"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 90%; height: 16px; margin: 4px 0;"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 85%; height: 16px; margin: 4px 0;"></ion-skeleton-text>
       </div>
     </div>
   </div>
+
+  <!-- Hymn Content -->
+  <div class="hymn-detail" *ngIf="!isLoading && hymn">
+    <!-- Toast de feedback de mudança de fonte -->
+    <div class="font-feedback" [class.show]="showFontFeedback">
+      <ion-icon name="text-outline"></ion-icon>
+      <span>{{fontFeedbackMessage}}</span>
+    </div>
+    
+    <h1 class="hymn-title animate-in">{{hymn.title}}</h1>
+    
+    <div class="content">
+      <div 
+        [ngClass]="item.type" 
+        *ngFor="let item of hymn.content; let i = index" 
+        class="hymn-section animate-in"
+        [style.animation-delay]="i * 100 + 'ms'">
+        <h3 class="section-title">{{ item.type === 'verse' ? 'Verse' : 'Chorus' }}</h3>
+        <p *ngFor="let line of item.lines" class="hymn-line">{{line}}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Controles Flutuantes (alternativa) -->
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button size="small" color="primary">
+      <ion-icon name="text-outline"></ion-icon>
+    </ion-fab-button>
+    
+    <ion-fab-list side="top"> -->
+      <!-- Aumentar -->
+      <!-- <ion-fab-button 
+        (click)="increaseFontSize()" 
+        [disabled]="currentFontSize >= maxFontSize"
+        color="secondary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button> -->
+      
+      <!-- Reset -->
+      <!-- <ion-fab-button 
+        (click)="resetFontSize()" 
+        color="tertiary">
+        <ion-icon name="refresh"></ion-icon>
+      </ion-fab-button> -->
+      
+      <!-- Diminuir -->
+      <!-- <ion-fab-button 
+        (click)="decreaseFontSize()" 
+        [disabled]="currentFontSize <= minFontSize"
+        color="warning">
+        <ion-icon name="remove"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
 </ion-content>
