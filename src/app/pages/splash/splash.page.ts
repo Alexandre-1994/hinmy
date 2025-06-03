@@ -55,7 +55,7 @@ export class SplashPage implements OnInit, OnDestroy {
     // Redireciona após 5 segundos
     this.redirectTimeout = setTimeout(() => {
       this.router.navigate(['/hymn-list']);
-    }, 5000); // ← MUDANÇA AQUI: 5 segundos
+    }, 50000); // ← MUDANÇA AQUI: 5 segundos
   }
 
   skipSplash() {
