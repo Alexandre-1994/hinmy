@@ -15,6 +15,7 @@ import { Hymn } from '../../interfaces/hymn.interface';
 export class HymnDetailPage implements OnInit, OnDestroy {
   
   hymn?: Hymn;
+  isLoading: boolean = true;
   
   // ===== CONFIGURAÇÕES DE CONTROLE DE FONTE =====
   currentFontSize: number = 16;      // Tamanho padrão
@@ -36,19 +37,25 @@ export class HymnDetailPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Carregar tamanho de fonte salvo
     this.loadSavedFontSize();
-    
-    // Carregar hino
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.hymn = this.hymnService.getHymnById(id);
+    this.loadHymn();
   }
 
   ngOnDestroy() {
-    // Limpar timeout se existir
     if (this.feedbackTimeout) {
       clearTimeout(this.feedbackTimeout);
     }
+  }
+
+  private loadHymn() {
+    this.isLoading = true;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    
+    // Simular um pequeno delay para mostrar o loading
+    setTimeout(() => {
+      this.hymn = this.hymnService.getHymnById(id);
+      this.isLoading = false;
+    }, 800);
   }
 
   // ===== MÉTODOS DE CONTROLE DE FONTE =====

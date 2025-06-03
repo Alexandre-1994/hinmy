@@ -47,30 +47,44 @@
   [fullscreen]="true" 
   class="ion-padding hymn-content" 
   [style.--dynamic-font-size]="currentFontSize + 'px'"
-  *ngIf="hymn" style="background-color: aliceblue !important;">
-  
-  <!-- Toast de feedback de mudança de fonte -->
-  <div class="font-feedback" [class.show]="showFontFeedback">
-    <ion-icon name="text-outline"></ion-icon>
-    <span>{{fontFeedbackMessage}}</span>
+  style="background-color: aliceblue !important;">
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="isLoading">
+    <ion-skeleton-text [animated]="true" style="width: 60%; height: 32px; margin: 16px auto;"></ion-skeleton-text>
+    <div class="skeleton-content">
+      <div class="skeleton-section" *ngFor="let i of [1,2,3]">
+        <ion-skeleton-text [animated]="true" style="width: 30%; height: 24px; margin: 8px 0;"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 90%; height: 16px; margin: 4px 0;"></ion-skeleton-text>
+        <ion-skeleton-text [animated]="true" style="width: 85%; height: 16px; margin: 4px 0;"></ion-skeleton-text>
+      </div>
+    </div>
   </div>
-  
-  <div class="hymn-detail">
-    <h1 class="hymn-title">{{hymn.title}}</h1>
+
+  <!-- Hymn Content -->
+  <div class="hymn-detail" *ngIf="!isLoading && hymn">
+    <!-- Toast de feedback de mudança de fonte -->
+    <div class="font-feedback" [class.show]="showFontFeedback">
+      <ion-icon name="text-outline"></ion-icon>
+      <span>{{fontFeedbackMessage}}</span>
+    </div>
+    
+    <h1 class="hymn-title animate-in">{{hymn.title}}</h1>
     
     <div class="content">
       <div 
         [ngClass]="item.type" 
-        *ngFor="let item of hymn.content" 
-        class="hymn-section">
+        *ngFor="let item of hymn.content; let i = index" 
+        class="hymn-section animate-in"
+        [style.animation-delay]="i * 100 + 'ms'">
         <h3 class="section-title">{{ item.type === 'verse' ? 'Verse' : 'Chorus' }}</h3>
         <p *ngFor="let line of item.lines" class="hymn-line">{{line}}</p>
       </div>
     </div>
-    
   </div>
-   <!-- Controles Flutuantes (alternativa) -->
-   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  
+  <!-- Controles Flutuantes (alternativa) -->
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button size="small" color="primary">
       <ion-icon name="text-outline"></ion-icon>
     </ion-fab-button>
