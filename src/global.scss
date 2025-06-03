@@ -172,7 +172,7 @@ ion-content {
   --background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 50%);
   contain: content;
   will-change: scroll-position;
-  animation: fadeIn 0.3s ease-out;
+  // animation: fadeIn 0.3s ease-out;
 }
 
 ion-title {
@@ -693,10 +693,10 @@ ion-label {
   }
 }
 
-.hymn-item:nth-child(odd) {
-  animation: listItemGlow 4s ease-in-out infinite;
-  animation-delay: 2s;
-}
+// .hymn-item:nth-child(odd) {
+//   animation: listItemGlow 4s ease-in-out infinite;
+//   animation-delay: 2s;
+// }
 
 /* ===== ESTADOS DE FONTE DIFERENTES ===== */
 
@@ -979,7 +979,7 @@ ion-label {
       width: 200%;
       height: 200%;
       background: radial-gradient(circle, rgba(244, 196, 48, 0.05) 0%, transparent 70%);
-      animation: gentleGlow 8s ease-in-out infinite;
+      // animation: gentleGlow 8s ease-in-out infinite;
       pointer-events: none;
       z-index: -1;
     }

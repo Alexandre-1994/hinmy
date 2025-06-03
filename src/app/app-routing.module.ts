@@ -15,17 +15,17 @@ const routes: Routes = [
   {
     path: 'hymn-list',
     loadChildren: () => import('./pages/hymn-list/hymn-list.module').then(m => m.HymnListPageModule),
-    data: { animation: 'hymn-list' }  // ← Identificador para animação
+    // data: { animation: 'hymn-list' }  // ← Identificador para animação
   },
   {
     path: 'hymn-detail/:id',
     loadChildren: () => import('./pages/hymn-detail/hymn-detail.module').then(m => m.HymnDetailPageModule),
-    data: { animation: 'hymn-detail' }  // ← Identificador para animação
+    // data: { animation: 'hymn-detail' }  // ← Identificador para animação
   },
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about-routing.module').then(m => m.AboutPageRoutingModule),
-    data: { animation: 'about' }  // ← Identificador para animação
+    // data: { animation: 'about' }  // ← Identificador para animação
   }
 ];
 
