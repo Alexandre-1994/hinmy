@@ -53,14 +53,14 @@
   {
     "id": 3,
     "number": 3,
-    "title": "A Nom Lon Peiasan",
-    "language": "unknown",
+    "title": "A Nom Non Peiasan",
+    "language": "Chuukese",
     "content": [
       {
         "type": "verse",
         "lines": [
-          "A nom lon peiasan, Jesus ach Samol,",
-          "Iwe, a ranilo lon lesosor."
+          "A nom non peiasan, Jesus ach Samol,",
+          "Iwe, a ranino non nesosor."
         ]
       },
       {
@@ -69,7 +69,7 @@
           "Iwe, a kul ewe fau,",
           "Jesus Kraist A manau seni ma",
           "Jesus Kraist A tou seni peiasan,",
-          "Ach chon amanau pworaiti malo;",
+          "Ach chon amanau pworaiti mano;",
           "A manau, Amanau, Haleluia A manau."
         ]
       },
@@ -77,13 +77,14 @@
         "type": "verse",
         "lines": [
           "Sounfiu ra mamasa peiasen Jesus,",
-          "Nge ra chok niueiti saramen lang.",
-          "Jesus ach souakom A manausefal,",
+          "Nge ra chok niueiti saramen nang.",
+          "Jesus ach souakom A manausefan,",
           "Oukich chon kukumwir, sa manau ren."
         ]
       }
     ]
-  },
+  }
+  ,
   {
     "id": 4,
     "number": 4,
